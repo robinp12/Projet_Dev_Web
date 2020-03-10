@@ -11,7 +11,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create('fr_FR');
+        $faker = Factory::create('fr_BE');
 
        for($i =0; $i<10 ; $i++){
            $conf = new Conference();
