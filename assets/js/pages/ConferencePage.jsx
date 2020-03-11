@@ -3,12 +3,26 @@ import axios from 'axios';
 const ConferencePage = props => {
 
     const [conferences, setConferences] = useState([]);
+
     useEffect(() => {
         axios
             .get("http://localhost:8000/api/conferences")
             .then(response => response.data["hydra:member"])
-            .then(data => setConferences(data));
-    }, [])
+            .then(data => setConferences(data))
+            .catch(error => console.log(error.response));
+    }, []);
+
+    const handleDelete = id => {
+        const originalConferences = [...conferences];
+        setConferences(conferences.filter(conference => conference.id !== id));
+
+        axios
+            .delete("http://localhost:8000/api/conferences/" + id)
+            .catch(error => {
+                setConferences(originalConferences)
+            });
+    };
+
     return ( <>
         <h1>Liste des conférences</h1>
         <table className="table table-hover">
@@ -29,6 +43,9 @@ const ConferencePage = props => {
                         <td>{conference.description}</td>
                         {/*<td>{conference.getHourFormat}</td>*/}
                         {/*<td>{conference.hourEnd}</td>*/}
+                        <td>
+                            <button onClick={() => handleDelete(conference.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                        </td>
                     </tr>
                  )}
             </tbody>
