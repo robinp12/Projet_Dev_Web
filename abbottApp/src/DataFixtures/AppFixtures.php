@@ -2,24 +2,37 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Conference;
+use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+    /**
+     * Encode password
+     *
+     * @var UserPasswordEncoderInterface
+     */
+    private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_BE');
 
-       for($i =0; $i<10 ; $i++){
-           $conf = new Conference();
-           $conf->setName($faker->city);
-           $conf->setDescription($faker->text);
-           $conf->setHourStart(new \DateTime());
-           $manager->persist($conf);
-       }
+        $user = new Users();
+        $hash = $this->encoder->encodePassword($user, 'password');
+        $user->setLastname("Mohimont");
+        $user->setFirstname("Simon");
+        $user->setEmail("simon.mohimont@hotmail.com");
+        $user->setPassword($hash);
+        $manager->persist($user);
 
         $manager->flush();
     }
