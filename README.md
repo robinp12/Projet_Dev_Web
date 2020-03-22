@@ -1,4 +1,9 @@
-# Groupe 28
+# Dev-Web
+
+## Projet réalisé pour: 
+## Abbott - division Cardiac Rhythm Management
+
+### Groupe 28
 
 Nous allons développer une plateforme pour une division d’Abbott Medical. (Abbott - division Cardiac Rhythm Management).
 La plateforme demandée sera surtout utilisée pour faire la promotion de leurs événements, par exemple leurs conférences médicales.
