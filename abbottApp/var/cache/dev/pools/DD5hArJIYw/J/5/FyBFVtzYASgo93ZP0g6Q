@@ -1,3 +1,0 @@
-<?php //route_name_ea70b2f35d3d5cc452cbf130e8c5dcf9
-
-return [PHP_INT_MAX, 'api_conferences_get_collection'];
