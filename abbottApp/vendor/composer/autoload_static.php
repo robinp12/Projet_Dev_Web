@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
+class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -16,6 +16,7 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -23,14 +24,10 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'Z' => 
-        array (
-            'Zend\\EventManager\\' => 18,
-            'Zend\\Code\\' => 10,
-        ),
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
+            'Webimpress\\SafeWriter\\' => 22,
         ),
         'T' => 
         array (
@@ -39,7 +36,6 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         ),
         'S' => 
         array (
-            'Symfony\\WebpackEncoreBundle\\' => 28,
             'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
@@ -112,14 +108,9 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
+            'ProxyManager\\' => 13,
             'PhpParser\\' => 10,
             'PackageVersions\\' => 16,
-        ),
-        'N' => 
-        array (
-            'Nelmio\\CorsBundle\\' => 18,
-            'Negotiation\\' => 12,
-            'Namshi\\JOSE\\' => 12,
         ),
         'M' => 
         array (
@@ -127,13 +118,9 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         ),
         'L' => 
         array (
-            'Lexik\\Bundle\\JWTAuthenticationBundle\\' => 37,
-            'Lcobucci\\JWT\\' => 13,
-        ),
-        'F' => 
-        array (
-            'Fig\\Link\\' => 9,
-            'Faker\\' => 6,
+            'Laminas\\ZendFrameworkBridge\\' => 28,
+            'Laminas\\EventManager\\' => 21,
+            'Laminas\\Code\\' => 13,
         ),
         'E' => 
         array (
@@ -149,20 +136,17 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
             'Doctrine\\DBAL\\' => 14,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
-            'Doctrine\\Common\\DataFixtures\\' => 29,
             'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
-            'Doctrine\\Bundle\\FixturesBundle\\' => 31,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
         ),
         'A' => 
         array (
             'App\\Tests\\' => 10,
             'App\\' => 4,
-            'ApiPlatform\\Core\\' => 17,
         ),
     );
 
@@ -173,17 +157,13 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'Zend\\EventManager\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-eventmanager/src',
-        ),
-        'Zend\\Code\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-code/src',
-        ),
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Webimpress\\SafeWriter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webimpress/safe-writer/src',
         ),
         'Twig\\Extra\\TwigExtraBundle\\' => 
         array (
@@ -192,10 +172,6 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
-        ),
-        'Symfony\\WebpackEncoreBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src',
         ),
         'Symfony\\Polyfill\\Php73\\' => 
         array (
@@ -473,6 +449,10 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'ProxyManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src/ProxyManager',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -481,37 +461,21 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         array (
             0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
         ),
-        'Nelmio\\CorsBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
-        ),
-        'Negotiation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
-        ),
-        'Namshi\\JOSE\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE',
-        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Lexik\\Bundle\\JWTAuthenticationBundle\\' => 
+        'Laminas\\ZendFrameworkBridge\\' => 
         array (
-            0 => __DIR__ . '/..' . '/lexik/jwt-authentication-bundle',
+            0 => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src',
         ),
-        'Lcobucci\\JWT\\' => 
+        'Laminas\\EventManager\\' => 
         array (
-            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+            0 => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src',
         ),
-        'Fig\\Link\\' => 
+        'Laminas\\Code\\' => 
         array (
-            0 => __DIR__ . '/..' . '/fig/link-util/src',
-        ),
-        'Faker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+            0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -549,10 +513,6 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
         ),
-        'Doctrine\\Common\\DataFixtures\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures',
-        ),
         'Doctrine\\Common\\Collections\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
@@ -576,10 +536,6 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle',
         ),
-        'Doctrine\\Bundle\\FixturesBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle',
-        ),
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
@@ -591,20 +547,6 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
-        ),
-        'ApiPlatform\\Core\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/api-platform/core/src',
-        ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'P' => 
-        array (
-            'ProxyManager\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
-            ),
         ),
     );
 
@@ -621,10 +563,9 @@ class ComposerStaticInit3055dc041efb7cea007d6911d74ba35a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3055dc041efb7cea007d6911d74ba35a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3055dc041efb7cea007d6911d74ba35a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit3055dc041efb7cea007d6911d74ba35a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit3055dc041efb7cea007d6911d74ba35a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3::$classMap;
 
         }, null, ClassLoader::class);
     }
