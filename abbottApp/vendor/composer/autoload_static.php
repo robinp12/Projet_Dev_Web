@@ -36,6 +36,7 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         ),
         'S' => 
         array (
+            'Symfony\\WebpackEncoreBundle\\' => 28,
             'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
@@ -112,6 +113,11 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
             'PhpParser\\' => 10,
             'PackageVersions\\' => 16,
         ),
+        'N' => 
+        array (
+            'Nelmio\\CorsBundle\\' => 18,
+            'Negotiation\\' => 12,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -121,6 +127,10 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
             'Laminas\\ZendFrameworkBridge\\' => 28,
             'Laminas\\EventManager\\' => 21,
             'Laminas\\Code\\' => 13,
+        ),
+        'F' => 
+        array (
+            'Fig\\Link\\' => 9,
         ),
         'E' => 
         array (
@@ -147,6 +157,7 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         array (
             'App\\Tests\\' => 10,
             'App\\' => 4,
+            'ApiPlatform\\Core\\' => 17,
         ),
     );
 
@@ -172,6 +183,10 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\WebpackEncoreBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src',
         ),
         'Symfony\\Polyfill\\Php73\\' => 
         array (
@@ -461,6 +476,14 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         array (
             0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
         ),
+        'Nelmio\\CorsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
+        ),
+        'Negotiation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -476,6 +499,10 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         'Laminas\\Code\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
+        ),
+        'Fig\\Link\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fig/link-util/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -547,6 +574,10 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'ApiPlatform\\Core\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/api-platform/core/src',
         ),
     );
 
