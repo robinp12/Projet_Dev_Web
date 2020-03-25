@@ -36,7 +36,11 @@ const App = () => {
             </HashRouter>
         </AuthContext.Provider>
     )
+
+
 };
+
+console.log("hello");
 
 const rootElement = document.querySelector("#app");
 
