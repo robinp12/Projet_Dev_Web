@@ -23,15 +23,15 @@ class AppFixtures extends Fixture
 
             $manager->persist($customer);
 
-            for($i =0 ; $i < mt_rand(3,10); $i++){
-                $invoice = new Invoice();
-                $invoice    -> setAmount($faker->randomFloat(2,250,5000))
-                            -> setSentAt($faker->dateTimeBetween('-6 months'))
-                            -> setStatus($faker->randomElement(['SENT','PAID','CANCELLED']))
-                            -> setCustomerLien($customer);
+            // for($i =0 ; $i < mt_rand(3,10); $i++){
+            //     $invoice = new Invoice();
+            //     $invoice    -> setAmount($faker->randomFloat(2,250,5000))
+            //                 -> setSentAt($faker->dateTimeBetween('-6 months'))
+            //                 -> setStatus($faker->randomElement(['SENT','PAID','CANCELLED']))
+            //                 -> setCustomerLien($customer);
 
-                $manager->persist($invoice);
-            }
+            //     $manager->persist($invoice);
+            // }
         }
 
         $manager->flush();
