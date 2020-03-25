@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Conference;
+use App\Entity\Customer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Conference|null find($id, $lockMode = null, $lockVersion = null)
- * @method Conference|null findOneBy(array $criteria, array $orderBy = null)
- * @method Conference[]    findAll()
- * @method Conference[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Customer|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Customer|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Customer[]    findAll()
+ * @method Customer[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ConferenceRepository extends ServiceEntityRepository
+class CustomerRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Conference::class);
+        parent::__construct($registry, Customer::class);
     }
 
     // /**
-    //  * @return Conference[] Returns an array of Conference objects
+    //  * @return Customer[] Returns an array of Customer objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ConferenceRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Conference
+    public function findOneBySomeField($value): ?Customer
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

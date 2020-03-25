@@ -27,7 +27,6 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
-            'Webimpress\\SafeWriter\\' => 22,
         ),
         'T' => 
         array (
@@ -109,7 +108,6 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
-            'ProxyManager\\' => 13,
             'PhpParser\\' => 10,
             'PackageVersions\\' => 16,
         ),
@@ -117,6 +115,7 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         array (
             'Nelmio\\CorsBundle\\' => 18,
             'Negotiation\\' => 12,
+            'Namshi\\JOSE\\' => 12,
         ),
         'M' => 
         array (
@@ -124,6 +123,8 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         ),
         'L' => 
         array (
+            'Lexik\\Bundle\\JWTAuthenticationBundle\\' => 37,
+            'Lcobucci\\JWT\\' => 13,
             'Laminas\\ZendFrameworkBridge\\' => 28,
             'Laminas\\EventManager\\' => 21,
             'Laminas\\Code\\' => 13,
@@ -131,6 +132,7 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         'F' => 
         array (
             'Fig\\Link\\' => 9,
+            'Faker\\' => 6,
         ),
         'E' => 
         array (
@@ -146,11 +148,13 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
             'Doctrine\\DBAL\\' => 14,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
+            'Doctrine\\Common\\DataFixtures\\' => 29,
             'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
+            'Doctrine\\Bundle\\FixturesBundle\\' => 31,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
         ),
         'A' => 
@@ -171,10 +175,6 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
-        ),
-        'Webimpress\\SafeWriter\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webimpress/safe-writer/src',
         ),
         'Twig\\Extra\\TwigExtraBundle\\' => 
         array (
@@ -464,10 +464,6 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'ProxyManager\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src/ProxyManager',
-        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -484,9 +480,21 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         array (
             0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
         ),
+        'Namshi\\JOSE\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Lexik\\Bundle\\JWTAuthenticationBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lexik/jwt-authentication-bundle',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
         'Laminas\\ZendFrameworkBridge\\' => 
         array (
@@ -503,6 +511,10 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
+        ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -540,6 +552,10 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
         ),
+        'Doctrine\\Common\\DataFixtures\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures',
+        ),
         'Doctrine\\Common\\Collections\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
@@ -563,6 +579,10 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle',
         ),
+        'Doctrine\\Bundle\\FixturesBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle',
+        ),
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
@@ -581,6 +601,16 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'ProxyManager\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Collator' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Collator.php',
         'IntlDateFormatter' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/IntlDateFormatter.php',
@@ -596,6 +626,7 @@ class ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit16bce118dd93af7d0ffd317f7df0aaa3::$classMap;
 
         }, null, ClassLoader::class);
