@@ -6,7 +6,7 @@ const ConferencePage = props => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:8000/api/conferences")
+            .get("http://localhost:8888/api/conferences")
             .then(response => response.data["hydra:member"])
             .then(data => setConferences(data))
             .catch(error => console.log(error.response));
@@ -17,7 +17,7 @@ const ConferencePage = props => {
         setConferences(conferences.filter(conference => conference.id !== id));
 
         axios
-            .delete("http://localhost:8000/api/conferences/" + id)
+            .delete("http://localhost:8888/api/conferences/" + id)
             .catch(error => {
                 setConferences(originalConferences)
             });
