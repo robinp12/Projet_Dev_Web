@@ -4,11 +4,12 @@ import Countdown from '../components/Countdown';
 const HomePage = props => {
     return (
         <>
-        <div className="text-center">
-            <h1>Page D'acceuil</h1>
-            <hr />
-            <h2>Prochain évènement dans</h2>
-            <h2><Countdown /></h2>
+        <h5>Acceuil</h5>
+        <hr />
+        <br />
+        <div className="text-center">            
+            <h3>Prochain évènement dans</h3>
+            <h3><i><Countdown /></i></h3> {/*Si t'arrives a faire le décompte gooo x) */}
         </div>  
         </>
     )

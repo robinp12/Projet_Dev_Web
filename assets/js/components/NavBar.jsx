@@ -32,7 +32,7 @@ const Navbar = ({ history }) => {
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
                         <NavLink className="nav-link" to={"/conferences"}>
-                            Conferences
+                            Conférences
                         </NavLink>
                     </li>
                 </ul>

@@ -35,11 +35,13 @@ const LoginPage = ({ history}) => {
 
     return (
         <>
-            <h1>Connexion à l'app</h1>
+        <h5>Connexion</h5>
+        <hr />
+        <br />
 
             <form action="" onSubmit={handleSubmit}>
-                <Field label={"Adresse email"} name={"username"} value={credentials.username}
-                       placeholder={'Adresse email de Connexion'} onChange={handleChange} type={"email"} error={error}/>
+                <Field label={"Adresse mail"} name={"username"} value={credentials.username}
+                       placeholder={'Adresse mail'} onChange={handleChange} type={"email"} error={error}/>
                 <Field label={"Mot de passe"} name={"password"} value={credentials.password} onChange={handleChange}
                        type={"password"} error={""}/>
                 <div className="form-group">

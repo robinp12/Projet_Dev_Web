@@ -24,7 +24,9 @@ const ConferencePage = props => {
     };
 
     return ( <>
-        <h1>Liste des conférences</h1>
+        <h5>Liste des conférences<button className="float-right btn btn-outline-danger">Ajouter conférence</button></h5>
+        <hr />
+        <br />
         <table className="table table-hover">
             <thead>
                 <tr>
