@@ -29,15 +29,11 @@ class Countdown extends Component {
 
         return (
             <>
-            {this.state.mois} mois
-            <br />
-            {this.state.jour<0?30+this.state.jour:0} jour(s)
-            <br />
-            {this.state.heure<0?24+this.state.heure:0} heure(s)
-            <br />
-            {this.state.minute<0?59+this.state.minute:0} minute(s)
-            <br />
-            {this.state.second} secondes
+            {this.state.mois} mois {this.state.jour<0?30+this.state.jour:0} jour(s)
+            <br /> 
+            {this.state.heure<0?24+this.state.heure:0}:
+            {this.state.minute<0?59+this.state.minute:0}:
+            {this.state.second}
 
             </>
         )
