@@ -6,31 +6,39 @@ class Countdown extends Component {
     constructor(){
         super()
         this.state = {
-                now : new Date(),
-                // next : new Date('2020-03-28T23:59:59')
+                mois : 0,
+                jour : 0,
+                heure : 0,
+                minute : 0,
+                second : 0
             }
     }
     currentTime(){
         this.setState({
-            now: new Date()
+            mois : new Date('May 16, 2020 16:30:59').getMonth() - new Date().getMonth(),
+            jour : new Date('May 16, 2020 16:30:59').getDate() - new Date().getDate(),
+            heure : new Date('May 16, 2020 16:30:59').getHours() - new Date().getHours(),
+            minute : new Date('May 16, 2020 16:30:59').getMinutes() - new Date().getMinutes(),
+            second : new Date('May 16, 2020 16:30:59').getSeconds() - new Date().getSeconds(),
         })
     }
     componentWillMount() {
         setInterval(() => this.currentTime(this.state),1000)
     }
     render() {
-        // function time(state){
-        //     const jour = state.next.getDate() - state.now.getDate()
-        //     const heure = state.next.getHours() - state.now.getHours()
-        //     const minute = state.next.getMinutes() - state.now.getMinutes()
-        //     const second = state.next.getSeconds() - state.now.getSeconds()
-        //     const time = jour>0 && heure>0 && minute>0 && second>0 ?(jour + "J - " + heure + "h " + minute + "m " + second + "s"):(<i> Evenement passé </i>)
-        //     return time
-        // }
 
         return (
             <>
-            {this.state.now.toLocaleTimeString()}
+            {this.state.mois} mois
+            <br />
+            {this.state.jour<0?30+this.state.jour:0} jour(s)
+            <br />
+            {this.state.heure<0?24+this.state.heure:0} heure(s)
+            <br />
+            {this.state.minute<0?59+this.state.minute:0} minute(s)
+            <br />
+            {this.state.second} secondes
+
             </>
         )
     }
