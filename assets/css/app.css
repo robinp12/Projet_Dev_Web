@@ -2,3 +2,10 @@ h1{
     text-align: center;
     margin: 20px;
 }
+a.nav-link:hover{
+    border: solid 0.3px lightgray;
+    border-radius: 5px;
+}
+.countdown{
+    color : dimgray;
+}

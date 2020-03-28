@@ -9,7 +9,7 @@ const HomePage = props => {
         <br />
         <div className="text-center">            
             <h3>Prochain évènement dans</h3>
-            <h3><i><Countdown /></i></h3> {/*Si t'arrives a faire le décompte gooo x) */}
+            <h3 className="countdown"><i><Countdown day={'May 16, 2020 16:30:59'}/></i></h3>
         </div>  
         </>
     )

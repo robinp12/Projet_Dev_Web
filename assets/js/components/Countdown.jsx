@@ -6,7 +6,6 @@ class Countdown extends Component {
     constructor(){
         super()
         this.state = {
-                mois : 0,
                 jour : 0,
                 heure : 0,
                 minute : 0,
@@ -15,11 +14,14 @@ class Countdown extends Component {
     }
     currentTime(){
         this.setState({
-            mois : new Date('May 16, 2020 16:30:59').getMonth() - new Date().getMonth(),
-            jour : new Date('May 16, 2020 16:30:59').getDate() - new Date().getDate(),
-            heure : new Date('May 16, 2020 16:30:59').getHours() - new Date().getHours(),
-            minute : new Date('May 16, 2020 16:30:59').getMinutes() - new Date().getMinutes(),
-            second : new Date('May 16, 2020 16:30:59').getSeconds() - new Date().getSeconds(),
+            jour : Math.floor((new Date(this.props.day).getTime() - new Date().getTime())
+                / (1000 * 60 * 60 * 24)),
+            heure : Math.floor(((new Date(this.props.day).getTime() - new Date().getTime())
+                % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+            minute : Math.floor(((new Date(this.props.day).getTime() - new Date().getTime())
+                % (1000 * 60 * 60)) / (1000 * 60)),
+            second : Math.floor(((new Date(this.props.day).getTime() - new Date().getTime())
+                % (1000 * 60)) / 1000)
         })
     }
     componentWillMount() {
@@ -29,12 +31,7 @@ class Countdown extends Component {
 
         return (
             <>
-            {this.state.mois} mois {this.state.jour<0?30+this.state.jour:0} jour(s)
-            <br /> 
-            {this.state.heure<0?24+this.state.heure:0}:
-            {this.state.minute<0?59+this.state.minute:0}:
-            {this.state.second}
-
+            {this.state.jour}j {this.state.heure}h {this.state.minute}m {this.state.second}s
             </>
         )
     }
