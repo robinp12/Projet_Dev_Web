@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+    margin: 20px;
+}
+a.nav-link:hover{
+    border: solid 0.3px lightgray;
+    border-radius: 5px;
+}
+.countdown{
+    color : white;
+    text-shadow: black  0px 0px 3px;
+}
+.card{
+    padding: 1%;
+    margin: 2%;
+    margin-left:10%;
+    margin-right:10%;
+
+}
