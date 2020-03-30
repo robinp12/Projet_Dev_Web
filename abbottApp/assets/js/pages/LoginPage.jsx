@@ -7,7 +7,7 @@ const LoginPage = ({ history}) => {
     const {setIsAuthenticated} = useContext(AuthContext);
 
     const [credentials, setCredentials] = useState({
-        username: "simon.mohimont@hotmail.com",
+        username: "gauthier.bohyn@gmail.com",
         password: "password",
     });
 
