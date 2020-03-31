@@ -25,9 +25,9 @@ const ConferencePage = props => {
     };
 
     return ( <>
-        <Header title={"Liste des conférences"} other={<button className="float-right btn btn-outline-primary">Ajouter conférence</button>}/>
+        <Header title={"Liste des conférences"} other={<button onClick={() => handleDelete(conference.id)} className="float-right btn btn-outline-primary">Ajouter conférence</button>}/>
 
-        <table className="table table-hover table-striped">
+        <table className="table table-hover table-striped text-center">
             <thead>
                 <tr>
                     <th>Identifiant</th>
@@ -45,7 +45,7 @@ const ConferencePage = props => {
                         <td>{conference.description}</td>
                         {/*<td>{conference.getHourFormat}</td>*/}
                         {/*<td>{conference.hourEnd}</td>*/}
-                        <td>
+                        <td className="float-right">
                             <button onClick={() => handleDelete(conference.id)} className="btn btn-sm btn-danger">Supprimer</button>
                         </td>
                     </tr>

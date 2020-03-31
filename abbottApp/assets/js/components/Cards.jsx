@@ -8,13 +8,13 @@ class Cards extends Component{
     return (
             <>
             <div className="card">
-                <img class="card-img-top" src={image} alt=""/>
-                <div class="card-body">
-                    <h4 class="card-title">{title}</h4>
+                <img className="card-img-top" src={image} alt=""/>
+                <div className="card-body">
+                    <h4 className="card-title">{title}</h4>
                     {content}
                 </div>
-                <div class="card-footer text-muted text-center">
-                <Countdown day={date}/>
+                <div className="card-footer text-muted text-center">
+                <b><Countdown day={date}/></b>
                 </div>
             </div>
             </>
