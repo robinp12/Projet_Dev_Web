@@ -1,15 +1,12 @@
-import React, { useEffect,useState } from 'react';
-import Countdown from '../components/Countdown';
+import React from 'react';
 import Cards from '../components/Cards';
+import Header from '../components/Header';
 
 const HomePage = props => {
     
     return (
         <>
-        <h4>Acceuil</h4>
-        <hr />
-        <br />
-            
+        <Header title={"Accueil"}/>
             <div className="text-center top">
                 <h1>Bienvenue </h1>
             </div> 
@@ -39,7 +36,7 @@ const HomePage = props => {
                 title={"Conference 4"} 
                 content={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque maiores adipisci possimus exercitationem ut doloremque, rem corrupti illo, alias unde ducimus, ea cupiditate dolore blanditiis praesentium. Aliquid saepe est ipsa"}
                 date={'May 16, 2020 16:30:59'}
-            /> 
+            />
         </>
     )
 }

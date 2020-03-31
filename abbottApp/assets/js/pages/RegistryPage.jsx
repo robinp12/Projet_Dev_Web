@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Field from '../components/forms/Fields';
+import Header from '../components/Header';
 
 class RegistryPage extends Component {
     render(){
         return (
             <>
-                <h5>Inscription</h5>
-                <hr />
-                <br />
-
+            <Header title={"Inscription"}/>
                 <form action="" onSubmit="">
                     <Field name={"nom"} label={"Nom"} placeholder={"Nom"} error={""} />
                     <Field name={"prenom"} label={"Prenom"} placeholder={"Prenom"} error={""} />

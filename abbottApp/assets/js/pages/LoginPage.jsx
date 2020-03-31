@@ -2,6 +2,7 @@ import React,{ useState, useContext} from 'react';
 import authAPI from "../services/authAPI";
 import AuthContext from "../contexts/authContext";
 import Field from "../components/forms/Fields";
+import Header from '../components/Header';
 
 const LoginPage = ({ history}) => {
     const {setIsAuthenticated} = useContext(AuthContext);
@@ -35,10 +36,7 @@ const LoginPage = ({ history}) => {
 
     return (
         <>
-        <h5>Connexion</h5>
-        <hr />
-        <br />
-
+            <Header title={"Connexion"}/>
             <form action="" onSubmit={handleSubmit}>
                 <Field label={"Adresse mail"} name={"username"} value={credentials.username}
                        placeholder={'Adresse mail'} onChange={handleChange} type={"email"} error={error}/>

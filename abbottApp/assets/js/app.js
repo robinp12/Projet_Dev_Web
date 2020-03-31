@@ -13,6 +13,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import RegistryPage from './pages/RegistryPage';
 import CustomersPage from './pages/CustomersPage';
 import { Jumbotron } from 'react-bootstrap';
+import Footer from './components/Footer';
 
 authAPI.setup();
 
@@ -40,6 +41,7 @@ const App = () => {
                         <Route path={"/"} component={HomePage}/>
                     </Switch>
                     </Jumbotron>
+                    <Footer />
                 </main>
             </HashRouter>
         </AuthContext.Provider>

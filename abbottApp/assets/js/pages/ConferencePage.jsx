@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
+import Header from "../components/Header";
 const ConferencePage = props => {
 
     const [conferences, setConferences] = useState([]);
@@ -24,9 +25,8 @@ const ConferencePage = props => {
     };
 
     return ( <>
-        <h5>Liste des conférences<button className="float-right btn btn-outline-primary">Ajouter conférence</button></h5>
-        <hr />
-        <br />
+        <Header title={"Liste des conférences"} other={<button className="float-right btn btn-outline-primary">Ajouter conférence</button>}/>
+
         <table className="table table-hover table-striped">
             <thead>
                 <tr>

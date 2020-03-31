@@ -1,10 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const CustomersPage = (props) => {
     return ( <>
-        <h5>Liste des clients<button className="float-right btn btn-outline-primary">Ajouter client</button></h5>
-        <hr />
-        <br />
+        <Header title={"Liste des clients"} other={<button className="float-right btn btn-outline-primary">Ajouter client</button>}/>
+
         <table className="table table-hover table-striped">
             <thead>
                 <tr>
