@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
@@ -37,6 +39,31 @@ class Conference
      * @ORM\Column(type="time", nullable=true)
      */
     private $hourEnd;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $informations;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $room;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="conferences")
+     */
+    private $event;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="conference")
+     */
+    private $speakers;
+
+    public function __construct()
+    {
+        $this->speakers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,6 +114,73 @@ class Conference
     public function setHourEnd(?\DateTimeInterface $hourEnd): self
     {
         $this->hourEnd = $hourEnd;
+
+        return $this;
+    }
+
+    public function getInformations(): ?string
+    {
+        return $this->informations;
+    }
+
+    public function setInformations(?string $informations): self
+    {
+        $this->informations = $informations;
+
+        return $this;
+    }
+
+    public function getRoom(): ?string
+    {
+        return $this->room;
+    }
+
+    public function setRoom(?string $room): self
+    {
+        $this->room = $room;
+
+        return $this;
+    }
+
+    public function getEvent(): ?Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(?Event $event): self
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Speaker[]
+     */
+    public function getSpeakers(): Collection
+    {
+        return $this->speakers;
+    }
+
+    public function addSpeaker(Speaker $speaker): self
+    {
+        if (!$this->speakers->contains($speaker)) {
+            $this->speakers[] = $speaker;
+            $speaker->setConference($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpeaker(Speaker $speaker): self
+    {
+        if ($this->speakers->contains($speaker)) {
+            $this->speakers->removeElement($speaker);
+            // set the owning side to null (unless already changed)
+            if ($speaker->getConference() === $this) {
+                $speaker->setConference(null);
+            }
+        }
 
         return $this;
     }

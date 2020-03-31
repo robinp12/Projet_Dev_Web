@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -32,6 +34,53 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $addresse;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Admin", mappedBy="user")
+     */
+    private $admins;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="user")
+     */
+    private $speakers;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Participant", mappedBy="user")
+     */
+    private $participants;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Medecin", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $medecin;
+
+    public function __construct()
+    {
+        $this->admins = new ArrayCollection();
+        $this->speakers = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -109,5 +158,163 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?string $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getAddresse(): ?string
+    {
+        return $this->addresse;
+    }
+
+    public function setAddresse(?string $addresse): self
+    {
+        $this->addresse = $addresse;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Admin[]
+     */
+    public function getAdmins(): Collection
+    {
+        return $this->admins;
+    }
+
+    public function addAdmin(Admin $admin): self
+    {
+        if (!$this->admins->contains($admin)) {
+            $this->admins[] = $admin;
+            $admin->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdmin(Admin $admin): self
+    {
+        if ($this->admins->contains($admin)) {
+            $this->admins->removeElement($admin);
+            // set the owning side to null (unless already changed)
+            if ($admin->getUser() === $this) {
+                $admin->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Speaker[]
+     */
+    public function getSpeakers(): Collection
+    {
+        return $this->speakers;
+    }
+
+    public function addSpeaker(Speaker $speaker): self
+    {
+        if (!$this->speakers->contains($speaker)) {
+            $this->speakers[] = $speaker;
+            $speaker->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpeaker(Speaker $speaker): self
+    {
+        if ($this->speakers->contains($speaker)) {
+            $this->speakers->removeElement($speaker);
+            // set the owning side to null (unless already changed)
+            if ($speaker->getUser() === $this) {
+                $speaker->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->contains($participant)) {
+            $this->participants->removeElement($participant);
+            // set the owning side to null (unless already changed)
+            if ($participant->getUser() === $this) {
+                $participant->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getMedecin(): ?Medecin
+    {
+        return $this->medecin;
+    }
+
+    public function setMedecin(Medecin $medecin): self
+    {
+        $this->medecin = $medecin;
+
+        // set the owning side of the relation if necessary
+        if ($medecin->getUser() !== $this) {
+            $medecin->setUser($this);
+        }
+
+        return $this;
     }
 }
