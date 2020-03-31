@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import '../css/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import { HashRouter, Switch, Route, withRouter, Redirect } from "react-router-dom";
@@ -11,6 +12,7 @@ import AuthContext from "./contexts/authContext";
 import PrivateRoute from "./components/PrivateRoute";
 import RegistryPage from './pages/RegistryPage';
 import CustomersPage from './pages/CustomersPage';
+import { Jumbotron } from 'react-bootstrap';
 
 authAPI.setup();
 
@@ -25,7 +27,8 @@ const App = () => {
         <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated}}>
             <HashRouter>
                 <NavBarWIthRouter/>
-                <main className="container mt-5">
+                <main className="container">
+                    <Jumbotron>
                     <Switch>
                         <Route
                             path="/login"
@@ -36,6 +39,7 @@ const App = () => {
                         <PrivateRoute path={"/conferences"} component={ConferencePage}/>
                         <Route path={"/"} component={HomePage}/>
                     </Switch>
+                    </Jumbotron>
                 </main>
             </HashRouter>
         </AuthContext.Provider>

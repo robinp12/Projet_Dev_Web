@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import authAPI from "../services/authAPI";
 import {NavLink} from "react-router-dom";
 import AuthContext from "../contexts/authContext";
+import Dropdown from 'react-bootstrap/Dropdown'
 
 
 const Navbar = ({ history }) => {
@@ -13,7 +14,7 @@ const Navbar = ({ history }) => {
         history.push("/login");
     };
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <NavLink className="navbar-brand" to={"/"}>
                 Abbott
             </NavLink>
@@ -54,13 +55,16 @@ const Navbar = ({ history }) => {
                     </> ||
                     <>
                     <li className="nav-item active">
-                        <NavLink to={"/customers"} className="nav-link">
-                            Clients
-                        </NavLink>
                     </li>
-                    <li className="nav-item">
-                        <button onClick={handleLogout} className={"btn btn-danger"}>Déconnexion</button>
-                    </li>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="btn btn-outline-light" id="dropdown-basic">
+                            Compte
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/customers">Clients</Dropdown.Item>
+                            <Dropdown.Item onClick={handleLogout} >Déconnexion</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                     </>
                     }
                 </ul>

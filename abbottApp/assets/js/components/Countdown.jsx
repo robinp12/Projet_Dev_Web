@@ -6,7 +6,7 @@ class Countdown extends Component {
     constructor(){
         super()
         this.state = {
-                jour : "",
+                jour : "-",
                 heure : "",
                 minute : "",
                 second : ""

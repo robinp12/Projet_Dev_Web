@@ -24,7 +24,7 @@ const ConferencePage = props => {
     };
 
     return ( <>
-        <h5>Liste des conférences<button className="float-right btn btn-outline-danger">Ajouter conférence</button></h5>
+        <h5>Liste des conférences<button className="float-right btn btn-outline-primary">Ajouter conférence</button></h5>
         <hr />
         <br />
         <table className="table table-hover table-striped">
