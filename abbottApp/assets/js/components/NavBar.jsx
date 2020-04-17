@@ -35,6 +35,11 @@ const Navbar = ({ history }) => {
                             Conferences
                         </NavLink>
                     </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to={"/userAccess"}>
+                            Gestion des accès
+                        </NavLink>
+                    </li>
                 </ul>
                 <ul className="navbar-nav ml-auto">
                     {!isAuthenticated && <>

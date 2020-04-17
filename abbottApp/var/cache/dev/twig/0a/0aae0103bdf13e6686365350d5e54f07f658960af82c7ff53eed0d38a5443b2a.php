@@ -168,6 +168,6 @@ class __TwigTemplate_eaf2bc34a299752be0f4e45b607338eb68faed23a827217dbfba5d3fe54
 
     {{ include('@WebProfiler/Profiler/toolbar_item.html.twig', { link: false }) }}
 {% endblock %}
-", "@WebProfiler/Collector/ajax.html.twig", "/home/simon/Bureau/devWeb/abbottApp/vendor/symfony/web-profiler-bundle/Resources/views/Collector/ajax.html.twig");
+", "@WebProfiler/Collector/ajax.html.twig", "/home/simon/Bureau/devWeb/Projet_Dev_Web/abbottApp/vendor/symfony/web-profiler-bundle/Resources/views/Collector/ajax.html.twig");
     }
 }

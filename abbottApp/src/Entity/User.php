@@ -6,9 +6,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ApiResource
+ * @UniqueEntity("email", message="Un utilisateur ayant cette adresse email existe déjà")
+ * @ApiFilter(SearchFilter::class , properties={"email": "exact", "isAccepted": "exact"})
+ *
  */
 class User implements UserInterface
 {
@@ -74,6 +83,11 @@ class User implements UserInterface
      * @ORM\OneToOne(targetEntity="App\Entity\Medecin", mappedBy="user", cascade={"persist", "remove"})
      */
     private $medecin;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isAccepted;
 
     public function __construct()
     {
@@ -314,6 +328,18 @@ class User implements UserInterface
         if ($medecin->getUser() !== $this) {
             $medecin->setUser($this);
         }
+
+        return $this;
+    }
+
+    public function getIsAccepted(): ?bool
+    {
+        return $this->isAccepted;
+    }
+
+    public function setIsAccepted(bool $isAccepted): self
+    {
+        $this->isAccepted = $isAccepted;
 
         return $this;
     }

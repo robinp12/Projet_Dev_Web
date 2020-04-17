@@ -8,6 +8,7 @@ function logout() {
 }
 
 function authenticate(credentials){
+    console.log(credentials);
     return axios
         .post("http://localhost:8000/api/login_check", credentials)
         .then(response => response.data.token)

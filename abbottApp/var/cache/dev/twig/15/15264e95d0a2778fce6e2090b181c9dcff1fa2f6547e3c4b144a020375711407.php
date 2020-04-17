@@ -642,6 +642,6 @@ class __TwigTemplate_04ab6a7e73014ceeac810009f8b666709fcd455f13cefa60794037ba9e2
         }());
     </script>
 {% endblock %}
-", "@WebProfiler/Profiler/layout.html.twig", "/home/simon/Bureau/devWeb/abbottApp/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/layout.html.twig");
+", "@WebProfiler/Profiler/layout.html.twig", "/home/simon/Bureau/devWeb/Projet_Dev_Web/abbottApp/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/layout.html.twig");
     }
 }

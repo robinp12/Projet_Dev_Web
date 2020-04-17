@@ -179,6 +179,6 @@ class __TwigTemplate_049baff9bbd938e472e4ca32e5920b7af295262f1ae8b571608de782c24
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
-{% endblock %}", "app/index.html.twig", "/home/simon/Bureau/devWeb/abbottApp/templates/app/index.html.twig");
+{% endblock %}", "app/index.html.twig", "/home/simon/Bureau/devWeb/Projet_Dev_Web/abbottApp/templates/app/index.html.twig");
     }
 }

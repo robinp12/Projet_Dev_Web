@@ -1,7 +1,7 @@
 security:
     encoders:
         App\Entity\User:
-            algorithm: auto
+            algorithm: argon2i
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -45,5 +45,10 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: api/users, roles: IS_AUTHENTICATED_FULLY}
         - { path: api/conferences, roles: IS_AUTHENTICATED_FULLY}
+        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - {
+            path: ^/api/users,
+            roles: IS_AUTHENTICATED_FULLY,
+            methods: [GET, PUT, DELETE],
+        }

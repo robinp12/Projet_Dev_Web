@@ -4394,16 +4394,13 @@
     <service id="security.encoder_factory.generic" class="Symfony\Component\Security\Core\Encoder\EncoderFactory" public="false">
       <argument type="collection">
         <argument key="App\Entity\User" type="collection">
-          <argument key="algorithm">auto</argument>
-          <argument key="migrate_from" type="collection"/>
-          <argument key="hash_algorithm">sha512</argument>
-          <argument key="key_length">40</argument>
-          <argument key="ignore_case">false</argument>
-          <argument key="encode_as_base64">true</argument>
-          <argument key="iterations">5000</argument>
-          <argument key="cost">null</argument>
-          <argument key="memory_cost">null</argument>
-          <argument key="time_cost">null</argument>
+          <argument key="class">Symfony\Component\Security\Core\Encoder\NativePasswordEncoder</argument>
+          <argument key="arguments" type="collection">
+            <argument>null</argument>
+            <argument>null</argument>
+            <argument>null</argument>
+            <argument>2</argument>
+          </argument>
         </argument>
       </argument>
     </service>
@@ -4533,14 +4530,21 @@
     </service>
     <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
       <call method="add">
-        <argument type="service" id=".security.request_matcher.oRRqKk3"/>
+        <argument type="service" id=".security.request_matcher.scy8NoB"/>
         <argument type="collection">
           <argument>IS_AUTHENTICATED_FULLY</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id=".security.request_matcher.scy8NoB"/>
+        <argument type="service" id=".security.request_matcher.Ud1TEPV"/>
+        <argument type="collection">
+          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.Rh3vJBh"/>
         <argument type="collection">
           <argument>IS_AUTHENTICATED_FULLY</argument>
         </argument>
@@ -5075,11 +5079,20 @@
         <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
       </argument>
     </service>
-    <service id=".security.request_matcher.oRRqKk3" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>api/users</argument>
-    </service>
     <service id=".security.request_matcher.scy8NoB" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>api/conferences</argument>
+    </service>
+    <service id=".security.request_matcher.Ud1TEPV" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/api/login</argument>
+    </service>
+    <service id=".security.request_matcher.Rh3vJBh" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/api/users</argument>
+      <argument>null</argument>
+      <argument type="collection">
+        <argument>GET</argument>
+        <argument>PUT</argument>
+        <argument>DELETE</argument>
+      </argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -5451,10 +5464,14 @@
     </service>
     <service id="api_platform.filter_locator" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="annotated_app_entity_user_api_platform_core_bridge_doctrine_orm_filter_search_filter" type="service" id="annotated_app_entity_user_api_platform_core_bridge_doctrine_orm_filter_search_filter"/>
+      </argument>
     </service>
     <service id="api_platform.filter_collection_factory" class="ApiPlatform\Core\Api\FilterCollectionFactory" public="false">
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument>annotated_app_entity_user_api_platform_core_bridge_doctrine_orm_filter_search_filter</argument>
+      </argument>
     </service>
     <service id="api_platform.filters" class="ApiPlatform\Core\Api\FilterCollection" public="false">
       <argument type="service" id="api_platform.filter_locator"/>
@@ -6131,6 +6148,20 @@
     </service>
     <service id="lexik_jwt_authentication.security.jwt_user_provider" class="Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUserProvider" public="false">
       <argument></argument>
+    </service>
+    <service id="annotated_app_entity_user_api_platform_core_bridge_doctrine_orm_filter_search_filter" class="ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter" public="false" autowire="true">
+      <tag name="api_platform.filter"/>
+      <argument type="service" id="doctrine"/>
+      <argument>null</argument>
+      <argument type="service" id="api_platform.iri_converter"/>
+      <argument type="service" id="property_accessor"/>
+      <argument type="service" id="monolog.logger" on-invalid="ignore"/>
+      <argument type="collection">
+        <argument key="email">exact</argument>
+        <argument key="isAccepted">exact</argument>
+      </argument>
+      <argument type="service" id="api_platform.identifiers_extractor.cached" on-invalid="ignore"/>
+      <argument type="service" id="serializer.name_converter.metadata_aware" on-invalid="ignore"/>
     </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AppController" class="App\Controller\AppController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AppController" class="App\Controller\AppController" autowire="true" abstract="true"/>
@@ -7358,7 +7389,7 @@
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
     <service id=".service_locator.c3XszGA" alias="api_platform.serializer_locator" public="false"/>
-    <service id=".service_locator.BgI5J6G" alias="api_platform.filter_locator" public="false"/>
+    <service id=".service_locator.hRlmRKE" alias="api_platform.filter_locator" public="false"/>
     <service id=".service_locator.ISjGRTp" alias=".1_ServiceLocator~GdNC0t1" public="false"/>
     <service id=".service_locator.tHpW6v3" alias=".service_locator.Y7gDuDN" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>

@@ -9,6 +9,8 @@ import LoginPage from "./pages/LoginPage";
 import authAPI from "./services/authAPI";
 import AuthContext from "./contexts/authContext";
 import PrivateRoute from "./components/PrivateRoute";
+import RegisterPage from "./pages/RegisterPage";
+import UserAcceptPage from "./pages/UserAcceptPage";
 
 authAPI.setup();
 
@@ -30,6 +32,8 @@ const App = () => {
                             render={ props => <LoginPage onLogin={setIsAuthenticated} {...props}/> }
                         />
                         <PrivateRoute path={"/conferences"} component={ConferencePage}/>
+                        <PrivateRoute path={"/userAccess"} component={UserAcceptPage}/>
+                        <Route path={"/register"} component={RegisterPage}/>
                         <Route path={"/"} component={HomePage}/>
                     </Switch>
                 </main>

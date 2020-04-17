@@ -155,6 +155,6 @@ class __TwigTemplate_a94dd9416122e04e8a15660357e76c7a2ec34358743ef034d1e5caf0060
 {% block panel %}
     {{ render(path('_profiler_router', { token: token })) }}
 {% endblock %}
-", "@WebProfiler/Collector/router.html.twig", "/home/simon/Bureau/devWeb/abbottApp/vendor/symfony/web-profiler-bundle/Resources/views/Collector/router.html.twig");
+", "@WebProfiler/Collector/router.html.twig", "/home/simon/Bureau/devWeb/Projet_Dev_Web/abbottApp/vendor/symfony/web-profiler-bundle/Resources/views/Collector/router.html.twig");
     }
 }
