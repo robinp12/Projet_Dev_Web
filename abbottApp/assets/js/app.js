@@ -10,6 +10,8 @@ import authAPI from "./services/authAPI";
 import AuthContext from "./contexts/authContext";
 import PrivateRoute from "./components/PrivateRoute";
 import ContactPage from "./pages/ContactPage";
+import Conferencedetails from "./pages/Conferencedetails";
+
 authAPI.setup();
 
 const App = () => {
@@ -29,6 +31,7 @@ const App = () => {
                             path="/login"
                             render={ props => <LoginPage onLogin={setIsAuthenticated} {...props}/> }
                         />
+                        <Route path={"/conferencedetails"} component={Conferencedetails}/>
                         <Route path={"/contact"} component={ContactPage}/>
                         <Route path={"/conferences"} component={ConferencePage}/>
                         <Route path={"/"} component={HomePage}/>

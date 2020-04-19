@@ -29,6 +29,13 @@ const Navbar = ({ history }) => {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarColor01">
+            <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active">
+                        <NavLink className="nav-link" to={"/conferencedetails"}>
+                            Conferences Détails
+                        </NavLink>
+                    </li>
+                </ul>
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
                         <NavLink className="nav-link" to={"/conferences"}>
