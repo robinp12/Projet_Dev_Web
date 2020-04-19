@@ -9,34 +9,8 @@ import Button from '@material-ui/core/Button';
 
 const Contact = props => {
     return (
-        // <div>
-        // {/* <h1>Page Contact</h1> */}
-        //     {/* <div > */}
-        //         {/* <form>
-        //             <label>
-        //             Suis-je déjà membre? 
-        //             <input
-        //                 name="isGoing"
-        //                 type="checkbox"/>
-        //             </label>
-        //             <br />
-        //             <label>
-        //             Nom:
-        //             <input
-        //                 name="numberOfGuests"
-        //                 type="text"/>
-        //             </label>
-        //             <label>
-        //             Prénom:
-        //             <input
-        //                 name="numberOfGuests"
-        //                 type="text"/>
-        //             </label>
-        //             <label>
-        //             Message:
-        //             <textarea></textarea>
-        //             </label>
-        //         </form> */}
+        
+       
 <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Contactez-nous!
@@ -71,38 +45,7 @@ const Contact = props => {
             autoComplete="billing address-line2"
           />
         </Grid>
-        {/* <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
-            autoComplete="billing address-level2"
-          />
-        </Grid> */}
-        {/* <Grid item xs={12} sm={6}>
-          <TextField id="state" name="state" label="State/Province/Region" fullWidth />
-        </Grid> */}
-        {/* <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
-            fullWidth
-            autoComplete="billing postal-code"
-          />
-        </Grid> */}
         <Grid item xs={12}>
-          {/* <textarea
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth
-            autoComplete="billing country"
-          /> */}
           <TextField
             id="message"
             name="message"
@@ -118,9 +61,6 @@ const Contact = props => {
         </Grid>
       </Grid>
     </React.Fragment>
-    
-            // </div>
-        // </div>
     )
 }
 
