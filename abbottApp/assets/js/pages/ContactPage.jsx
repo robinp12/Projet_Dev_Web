@@ -103,11 +103,13 @@ const Contact = props => {
             fullWidth
             autoComplete="billing country"
           /> */}
-          <TextareaAutosize
-            rowsMax={12}
-            aria-label="message"
-            placeholder="Votre message."
-            />
+          <TextField
+            id="message"
+            name="message"
+            label="Votre message"
+            fullWidth
+            autoComplete="Message"
+          />
         </Grid>
         <Grid item xs={12}>
         <Button variant="contained" color="primary">
