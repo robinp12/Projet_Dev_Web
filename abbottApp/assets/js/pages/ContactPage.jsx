@@ -6,8 +6,25 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 const Contact = props => {
+
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+
+
     return (
         
        
@@ -58,6 +75,42 @@ const Contact = props => {
         <Button variant="contained" color="primary">
         Envoyer
         </Button>
+
+
+
+        <Grid item xs={3}  style={{ marginTop: 20 }}>
+        <div>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        S'abonner aux NewsLetters
+      </Button>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">S'abonner</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Inscrivez votre Email pour recevoir toutes les informations sur nos conférences.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email"
+            type="email"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Annuller
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            S'abonner
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+    </Grid>
+
+
         </Grid>
       </Grid>
     </React.Fragment>

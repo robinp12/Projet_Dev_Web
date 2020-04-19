@@ -77,8 +77,7 @@ const conferencedetails = props => {
                                         <ExpansionPanelDetails>
                                             {/* Description de l'orateur */}
                                         <Typography>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                            sit amet blandit leo lobortis eget.
+                                            Directeur du département cariologie de Delta Bruxelles
                                         </Typography>
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel>
@@ -98,10 +97,9 @@ const conferencedetails = props => {
                                     Grande description
                                     </Typography>
                                 </CardContent>
-                                
                             </Card>
                     </Grid>
-                        <Grid item xs={3}>
+                        {/* <Grid item xs={3}>
                             <Paper className={classes.paper}>xs=3</Paper>
                         </Grid>
                         <Grid item xs={3}>
@@ -112,7 +110,7 @@ const conferencedetails = props => {
                         </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.paper}>xs=3</Paper>
-                        </Grid>
+                        </Grid> */}
             </Grid>
         </div>
     </div>
