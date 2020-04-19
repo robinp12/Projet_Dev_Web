@@ -9,7 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import authAPI from "./services/authAPI";
 import AuthContext from "./contexts/authContext";
 import PrivateRoute from "./components/PrivateRoute";
-
+import ContactPage from "./pages/ContactPage";
 authAPI.setup();
 
 const App = () => {
@@ -29,7 +29,8 @@ const App = () => {
                             path="/login"
                             render={ props => <LoginPage onLogin={setIsAuthenticated} {...props}/> }
                         />
-                        <PrivateRoute path={"/conferences"} component={ConferencePage}/>
+                        <Route path={"/contact"} component={ContactPage}/>
+                        <Route path={"/conferences"} component={ConferencePage}/>
                         <Route path={"/"} component={HomePage}/>
                     </Switch>
                 </main>

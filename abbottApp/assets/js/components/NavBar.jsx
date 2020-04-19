@@ -36,6 +36,13 @@ const Navbar = ({ history }) => {
                         </NavLink>
                     </li>
                 </ul>
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active">
+                        <NavLink className="nav-link" to={"/contact"}>
+                            Contact
+                        </NavLink>
+                    </li>
+                </ul>
                 <ul className="navbar-nav ml-auto">
                     {!isAuthenticated && <>
                         <li className="nav-item">
