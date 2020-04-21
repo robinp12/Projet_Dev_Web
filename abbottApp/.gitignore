@@ -2,3 +2,7 @@
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+/vendor
+/cache
+/var/cache
+/node_modules
