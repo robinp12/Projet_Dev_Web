@@ -37,6 +37,11 @@ const Navbar = ({ history }) => {
                             Conférences
                         </NavLink>
                     </li>
+                    <li className="nav-item active">
+                        <NavLink className="nav-link" to={"/contact"}>
+                            Contact
+                        </NavLink>
+                    </li>
                     </>)}
                 </ul>
                 <ul className="navbar-nav ml-auto">
