@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import usersAPI from "../services/usersAPI";
 import {toast} from "react-toastify";
-import Header from '../components/Header';
 
 const UserAcceptPage = () => {
     const [unacceptedUsers, setUnacceptedUsers] = useState([]);
@@ -9,7 +8,7 @@ const UserAcceptPage = () => {
 
     const findUnacceptedUsers = async () => {
         try {
-            const data = await usersAPI.findUnaccepted();
+            const data = await usersAPI.findAll();
             setUnacceptedUsers(data);
         } catch (error) {
             console.log(error.response);
@@ -44,28 +43,44 @@ const UserAcceptPage = () => {
         findUnacceptedUsers();
     }, [reload]);
 
+
     return(
         <>
-            <Header title={"Liste des utilisateurs demandant l'accès à l'application"}/>
+            <h1>Liste des utilisateurs</h1>
             <div className="row justify-content-center">
 
-        <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">
-        <table className="table table-hover">
-            <thead className="bg-light">
+<div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+<table className="table table-hover">
+    <thead className="bg-light">
                 <tr>
                     <th>Nom</th>
-                    <th>email</th>
-                    <th></th>
+                    <th>Prénom</th>
+                    <th className="text-center">Email</th>
+                    <th className="text-center">Est accepté ?</th>
+                    <th className="text-center">\</th>
                 </tr>
                 </thead>
                 <tbody>
                 {unacceptedUsers.map(unacceptedUser =>
                     <tr key={unacceptedUser.id}>
-                        <td>{unacceptedUser.lastName + " " + unacceptedUser.firstName}</td>
-                        <td>{unacceptedUser.email}</td>
-                        <td>
-                            <button onClick={() => Accept(unacceptedUser.id)} className="btn btn-sm btn-success mr-3">Accepter</button>
-                            <button onClick={() => handleDelete(unacceptedUser.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                        <td>{unacceptedUser.lastName}</td>
+                        <td>{unacceptedUser.firstName}</td>
+                        <td className="text-center">{unacceptedUser.email}</td>
+                        <td className="text-center">{unacceptedUser.isAccepted && <i className="fas fa-check"></i> || <i className="fas fa-times"></i>}</td>
+                        <td className="text-center">
+                            {unacceptedUser.isAccepted == false &&
+                                <>
+                                    <button onClick={() => Accept(unacceptedUser.id)}
+                                    className="btn btn-sm btn-success mr-3">Accepter</button>
+                                    < button onClick={() => handleDelete(unacceptedUser.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                                </>
+                                ||
+                                <>
+                                    <button onClick={() => Accept(unacceptedUser.id)}
+                                        className="btn btn-sm btn-success mr-3" disabled={true}>Accepter</button>
+                                    < button onClick={() => handleDelete(unacceptedUser.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                                </>
+                                }
                         </td>
                     </tr>
                 )}
@@ -76,5 +91,4 @@ const UserAcceptPage = () => {
         </>
     )
 }
-
 export default UserAcceptPage;

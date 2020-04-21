@@ -25,8 +25,8 @@ const HomePage = props => {
                     <div className="card-title">{conf.name}</div>
                         <p className="card-text">{conf.description}</p>
                         <p className="card-text">
-                            <small className="text-muted">{(index+4)*6} days left
-                                <a href="#" className="btn btn-primary float-right mr-3">Voir plus</a>
+                            <small className="text-muted">1 days left
+                                <a href="#/conferencedetails" className="btn btn-primary float-right mr-3">Voir plus</a>
                             </small>
                         </p>
                     </div>

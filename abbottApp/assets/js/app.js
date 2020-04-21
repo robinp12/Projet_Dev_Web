@@ -13,6 +13,7 @@ import RegisterPage from "./pages/RegisterPage";
 import UserAcceptPage from "./pages/UserAcceptPage";
 import Footer from './components/Footer';
 import ContactPage from "./pages/ContactPage";
+import conferencedetails from './pages/Conferencedetails';
 
 authAPI.setup();
 
@@ -33,8 +34,8 @@ const App = () => {
                             path="/login"
                             render={ props => <LoginPage onLogin={setIsAuthenticated} {...props}/> }
                         />
-                        
-                        <PrivateRoute path={"/contact"} component={ContactPage}/>
+                        <Route path={"/contact"} component={ContactPage}/>
+                        <PrivateRoute path={"/conferencedetails"} component={conferencedetails}/>
                         <PrivateRoute path={"/conferences"} component={ConferencePage}/>
                         <PrivateRoute path={"/userAccess"} component={UserAcceptPage}/>
                         <Route path={"/register"} component={RegisterPage}/>

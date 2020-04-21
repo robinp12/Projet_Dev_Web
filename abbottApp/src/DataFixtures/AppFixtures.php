@@ -31,11 +31,27 @@ class AppFixtures extends Fixture
 
         $user = new User();
         $hash = $this->encoder->encodePassword($user, 'password');
+        $user->setEmail("robin@hotmail.com");
+        $user->setPassword($hash);
+        $user->setLastName("Paquet");
+        $user->setFirstName("Robin");
+        $user->setIsAccepted(true);
+        $manager->persist($user);
+
+        $user = new User();
         $user->setEmail("simon.mohimont@hotmail.com");
         $user->setPassword($hash);
-        $user->setLastName("robin");
-        $user->setFirstName("robin");
+        $user->setLastName("Mohi");
+        $user->setFirstName("Sim");
         $user->setIsAccepted(true);
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail("gauthier@hotmail.com");
+        $user->setPassword($hash);
+        $user->setLastName("Boh");
+        $user->setFirstName("Gauth");
+        $user->setIsAccepted(false);
         $manager->persist($user);
 
         for($e=0;$e<10;$e++){

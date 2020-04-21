@@ -31,18 +31,17 @@ const Navbar = ({ history }) => {
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
                 {authAPI.isAuthenticated() && (
-                            <>
                     <li className="nav-item active">
                         <NavLink className="nav-link" to={"/conferences"}>
                             Conférences
                         </NavLink>
                     </li>
+                    )}
                     <li className="nav-item active">
                         <NavLink className="nav-link" to={"/contact"}>
                             Contact
                         </NavLink>
                     </li>
-                    </>)}
                 </ul>
                 <ul className="navbar-nav ml-auto">
                 {authAPI.isAuthenticated() && (
