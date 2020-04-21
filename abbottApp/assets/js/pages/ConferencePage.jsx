@@ -1,9 +1,31 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import Header from "../components/Header";
+import Fields from "../components/forms/Fields"
+
+const AddConference = () => {
+    return (
+        <>
+        <div className="add">
+                <Fields className name={"Nom"} label={"Nom"} placeholder={"Nom"} />
+                <Fields name={"Description"} label={"Description"} placeholder={"Description"} type={"textarea"}/>
+                <div className="row">
+                    <div className="col-lg-6">
+                        <Fields name={"start"} label={"Heure de début"} placeholder={"Début"} type={"time"}/>
+                    </div>
+                    <div className="col-lg-6">
+                        <Fields name={"end"} label={"Heure de fin"} placeholder={"Fin"} type={"time"}/>
+                    </div>
+                </div>
+        </div>
+        <br/>
+        </>
+    )
+}
 const ConferencePage = props => {
 
     const [conferences, setConferences] = useState([]);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         axios
@@ -25,7 +47,8 @@ const ConferencePage = props => {
     };
 
     return ( <>
-        <Header title={"Liste des conférences"}/>
+        <Header title={"Liste des conférences"} other={<button className="btn btn-outline-primary" onClick={() => setShow(!show)}>Ajouter conférence</button>}/>
+        {show && <AddConference/>}
         <div className="row justify-content-center">
 
         <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">

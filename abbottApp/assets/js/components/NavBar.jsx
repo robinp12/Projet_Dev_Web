@@ -34,7 +34,7 @@ const Navbar = ({ history }) => {
                             <>
                     <li className="nav-item active">
                         <NavLink className="nav-link" to={"/conferences"}>
-                            Conferences
+                            Conférences
                         </NavLink>
                     </li>
                     </>)}
