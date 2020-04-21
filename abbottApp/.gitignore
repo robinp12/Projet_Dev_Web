@@ -4,5 +4,5 @@
 ###< lexik/jwt-authentication-bundle ###
 /vendor
 /cache
-/var/cache
+/var
 /node_modules

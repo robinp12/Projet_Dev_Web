@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
             $conference = new Conference();
             $conference->setName("Conference $faker->firstname")
             ->setHourStart(new DateTime())
-            ->setDescription($faker->text());
+            ->setDescription($faker->paragraph($nbSentences = 4));
             $manager->persist($conference);
         }
         $manager->flush();
