@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import usersAPI from "../services/usersAPI";
 import {toast} from "react-toastify";
+import Header from '../components/Header';
 
 const UserAcceptPage = () => {
     const [unacceptedUsers, setUnacceptedUsers] = useState([]);
@@ -45,9 +46,12 @@ const UserAcceptPage = () => {
 
     return(
         <>
-            <h1>Liste des utilisateurs demandant l'accès à l'application</h1>
-            <table className="table table-hover">
-                <thead>
+            <Header title={"Liste des utilisateurs demandant l'accès à l'application"}/>
+            <div className="row justify-content-center">
+
+        <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+        <table className="table table-hover">
+            <thead className="bg-light">
                 <tr>
                     <th>Nom</th>
                     <th>email</th>
@@ -67,6 +71,8 @@ const UserAcceptPage = () => {
                 )}
                 </tbody>
             </table>
+            </div>
+            </div>
         </>
     )
 }

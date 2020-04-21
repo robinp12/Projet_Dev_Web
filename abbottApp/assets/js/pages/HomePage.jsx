@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const HomePage = props => {
     return (
-        <h1>Page D'accueil</h1>
-    )
+        <Header title={"Page d'accueil"}/>
+        )
 }
 
 export default HomePage;

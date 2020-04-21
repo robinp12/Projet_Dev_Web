@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
+import Header from "../components/Header";
 const ConferencePage = props => {
 
     const [conferences, setConferences] = useState([]);
@@ -24,32 +25,38 @@ const ConferencePage = props => {
     };
 
     return ( <>
-        <h1>Liste des conférences</h1>
+        <Header title={"Liste des conférences"}/>
+        <div className="row justify-content-center">
+
+        <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">
         <table className="table table-hover">
-            <thead>
+            <thead className="bg-light">
                 <tr>
-                    <th>Identifiant</th>
+                    <th className="text-center">Identifiant</th>
                     <th>Nom</th>
                     <th>Description</th>
                     {/*<th>heure de début</th>*/}
                     {/*<th>heure de fin</th>*/}
+                    <th className="text-center">\</th>
                 </tr>
             </thead>
             <tbody>
                 {conferences.map(conference =>
                     <tr key={conference.id}>
-                        <td>{conference.id}</td>
+                        <td className="text-center">{conference.id}</td>
                         <td>{conference.name}</td>
                         <td>{conference.description}</td>
                         {/*<td>{conference.getHourFormat}</td>*/}
                         {/*<td>{conference.hourEnd}</td>*/}
-                        <td>
+                        <td className="text-center">
                             <button onClick={() => handleDelete(conference.id)} className="btn btn-sm btn-danger">Supprimer</button>
                         </td>
                     </tr>
                  )}
             </tbody>
         </table>
+        </div>
+        </div>
     </>)
 }
 

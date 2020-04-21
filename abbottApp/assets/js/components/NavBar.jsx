@@ -12,7 +12,7 @@ const Navbar = ({ history }) => {
         history.push("/login");
     };
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <NavLink className="navbar-brand" to={"/"}>
                 Abbott
             </NavLink>
@@ -20,8 +20,8 @@ const Navbar = ({ history }) => {
                 className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
-                data-target="#navbarColor01"
-                aria-controls="navbarColor01"
+                data-target="#navbarColor02"
+                aria-controls="navbarColor02"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
             >
@@ -30,6 +30,8 @@ const Navbar = ({ history }) => {
 
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
+                {authAPI.isAuthenticated() && (
+                            <>
                     <li className="nav-item active">
                         <NavLink className="nav-link" to={"/conferences"}>
                             Conferences
@@ -40,6 +42,7 @@ const Navbar = ({ history }) => {
                             Gestion des accès
                         </NavLink>
                     </li>
+                    </>)}
                 </ul>
                 <ul className="navbar-nav ml-auto">
                     {!isAuthenticated && <>
@@ -55,7 +58,7 @@ const Navbar = ({ history }) => {
                         </li>
                     </> ||
                     <li className="nav-item">
-                        <button onClick={handleLogout} className={"btn btn-danger"}>Déconnexion</button>
+                        <button onClick={handleLogout} className={"btn btn-outline-light"}>Déconnexion</button>
                     </li>
                     }
                 </ul>

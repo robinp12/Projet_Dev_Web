@@ -11,6 +11,7 @@ import AuthContext from "./contexts/authContext";
 import PrivateRoute from "./components/PrivateRoute";
 import RegisterPage from "./pages/RegisterPage";
 import UserAcceptPage from "./pages/UserAcceptPage";
+import Footer from './components/Footer';
 
 authAPI.setup();
 
@@ -25,7 +26,7 @@ const App = () => {
         <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated}}>
             <HashRouter>
                 <NavBarWIthRouter/>
-                <main className="container mt-5">
+                <main className="container pb-3 jumbotron">
                     <Switch>
                         <Route
                             path="/login"
@@ -36,6 +37,7 @@ const App = () => {
                         <Route path={"/register"} component={RegisterPage}/>
                         <Route path={"/"} component={HomePage}/>
                     </Switch>
+                    <Footer/>
                 </main>
             </HashRouter>
         </AuthContext.Provider>
