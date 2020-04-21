@@ -134,7 +134,9 @@ class __TwigTemplate_049baff9bbd938e472e4ca32e5920b7af295262f1ae8b571608de782c24
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 16
-        echo "    ";
+        echo "    <script src=\"https://kit.fontawesome.com/7483cc41fd.js\" crossorigin=\"anonymous\"></script>
+    ";
+        // line 17
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("app");
         echo "
 ";
@@ -158,7 +160,7 @@ class __TwigTemplate_049baff9bbd938e472e4ca32e5920b7af295262f1ae8b571608de782c24
 
     public function getDebugInfo()
     {
-        return array (  137 => 16,  127 => 15,  115 => 11,  105 => 10,  93 => 7,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
+        return array (  140 => 17,  137 => 16,  127 => 15,  115 => 11,  105 => 10,  93 => 7,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -178,6 +180,7 @@ class __TwigTemplate_049baff9bbd938e472e4ca32e5920b7af295262f1ae8b571608de782c24
 {% endblock %}
 
 {% block javascripts %}
+    <script src=\"https://kit.fontawesome.com/7483cc41fd.js\" crossorigin=\"anonymous\"></script>
     {{ encore_entry_script_tags('app') }}
 {% endblock %}", "app/index.html.twig", "/home/simon/Bureau/devWeb/Projet_Dev_Web/abbottApp/templates/app/index.html.twig");
     }

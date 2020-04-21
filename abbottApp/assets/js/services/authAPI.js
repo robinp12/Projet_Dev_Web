@@ -6,38 +6,7 @@ function logout() {
     delete axios.defaults.headers["Authorization"];
 }
 
-// function authenticate (credentials){
-//     console.log(credentials);
-//     axios.all([
-//         axios.post("http://localhost:8000/api/login_check", credentials),
-//         axios.get("http://localhost:8000/api/users?email="+ credentials["username"]),
-//     ]).then(axios.spread((...responses) => {
-//         console.log("a");
-//         const isAccepted = responses[1]["data"]["hydra:member"][0]["isAccepted"];
-//         const token = responses[0]["data"]["token"];
-//         console.log("aa");
-//         console.log(token);
-//         console.log(isAccepted);
-//         if (typeof token == 'undefined'){
-//             console.log("token");
-//             return false;
-//         }
-//         if (isAccepted == false){
-//             console.log("refused");
-//             return "refused";
-//         } else {
-//             console.log("accepted");
-//             window.localStorage.setItem("authToken", token);
-//             setAxiosToken(token);
-//             return "accepted";
-//         }
-//     })).catch(errors => {
-//         console.log(errors.response);
-//     })
-// }
-
 function authenticate(credentials){
-    console.log(credentials);
     return axios
         .post("http://localhost:8000/api/login_check", credentials)
         .then(response => response.data.token)
@@ -75,7 +44,6 @@ function getUserInfo(){
 
 function isAuthenticated(){
     const token = window.localStorage.getItem(("authToken"));
-    console.log(token);
     if (token) {
         const { exp: expiration } = jwtDecode(token);
         if (expiration > new Date().getTime() / 1000) {

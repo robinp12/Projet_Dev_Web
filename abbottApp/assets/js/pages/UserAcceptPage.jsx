@@ -8,7 +8,7 @@ const UserAcceptPage = () => {
 
     const findUnacceptedUsers = async () => {
         try {
-            const data = await usersAPI.findUnaccepted();
+            const data = await usersAPI.findAll();
             setUnacceptedUsers(data);
         } catch (error) {
             console.log(error.response);
@@ -43,14 +43,16 @@ const UserAcceptPage = () => {
         findUnacceptedUsers();
     }, [reload]);
 
+
     return(
         <>
-            <h1>Liste des utilisateurs demandant l'accès à l'application</h1>
+            <h1>Liste des utilisateurs</h1>
             <table className="table table-hover">
                 <thead>
                 <tr>
                     <th>Nom</th>
                     <th>email</th>
+                    <th>Est accepté ?</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -59,9 +61,21 @@ const UserAcceptPage = () => {
                     <tr key={unacceptedUser.id}>
                         <td>{unacceptedUser.lastName + " " + unacceptedUser.firstName}</td>
                         <td>{unacceptedUser.email}</td>
+                        <td>{unacceptedUser.isAccepted && <i className="fas fa-check"></i> || <i className="fas fa-times"></i>}</td>
                         <td>
-                            <button onClick={() => Accept(unacceptedUser.id)} className="btn btn-sm btn-success mr-3">Accepter</button>
-                            <button onClick={() => handleDelete(unacceptedUser.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                            {unacceptedUser.isAccepted == false &&
+                                <>
+                                    <button onClick={() => Accept(unacceptedUser.id)}
+                                    className="btn btn-sm btn-success mr-3">Accepter</button>
+                                    < button onClick={() => handleDelete(unacceptedUser.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                                </>
+                                ||
+                                <>
+                                    <button onClick={() => Accept(unacceptedUser.id)}
+                                        className="btn btn-sm btn-success mr-3" disabled={true}>Accepter</button>
+                                    < button onClick={() => handleDelete(unacceptedUser.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                                </>
+                                }
                         </td>
                     </tr>
                 )}
