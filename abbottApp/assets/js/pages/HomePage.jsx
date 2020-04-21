@@ -17,13 +17,19 @@ const HomePage = props => {
     return (<>
         <Header title={"Futures conférences"}/>
         <div className="justify-content-center row">
-            {!authAPI.isAuthenticated() && 
+            {authAPI.isAuthenticated() && 
             <>
-                {conferences.map(conf => 
-                <div className="card">
-                    {console.log(conf.name)}
-                    <div className="card-header">{conf.name}</div>
-                    <div className="card-body"><small>{conf.description}</small></div>
+                {conferences.map((conf,index) => 
+                <div key={index} className="card">
+                    <div className="card-body">
+                    <div className="card-title">{conf.name}</div>
+                        <p className="card-text">{conf.description}</p>
+                        <p className="card-text">
+                            <small className="text-muted">{(index+4)*6} days left
+                                <a href="#" className="btn btn-primary float-right mr-3">Voir plus</a>
+                            </small>
+                        </p>
+                    </div>
                 </div>
                 )}
             </> 

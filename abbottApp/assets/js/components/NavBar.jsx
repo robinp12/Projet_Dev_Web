@@ -37,14 +37,15 @@ const Navbar = ({ history }) => {
                             Conferences
                         </NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to={"/userAccess"}>
-                            Gestion des accès
-                        </NavLink>
-                    </li>
                     </>)}
                 </ul>
                 <ul className="navbar-nav ml-auto">
+                {authAPI.isAuthenticated() && (
+                    <li className="nav-item mr-3">
+                        <NavLink className="nav-link" to={"/userAccess"}>
+                            Accès
+                        </NavLink>
+                    </li>)}
                     {!isAuthenticated && <>
                         <li className="nav-item">
                             <NavLink to={"/register"} className="btn btn-light ml-2 mr-2">
