@@ -94,7 +94,6 @@ class User implements UserInterface
         $this->admins = new ArrayCollection();
         $this->speakers = new ArrayCollection();
         $this->participants = new ArrayCollection();
-        $this->isAccepted = false;
     }
 
     public function getId(): ?int

@@ -12,7 +12,7 @@ const Navbar = ({ history }) => {
         history.push("/login");
     };
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <NavLink className="navbar-brand" to={"/"}>
                 Abbott
             </NavLink>
@@ -20,8 +20,8 @@ const Navbar = ({ history }) => {
                 className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
-                data-target="#navbarColor01"
-                aria-controls="navbarColor01"
+                data-target="#navbarColor02"
+                aria-controls="navbarColor02"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
             >
@@ -30,18 +30,26 @@ const Navbar = ({ history }) => {
 
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
+                {authAPI.isAuthenticated() && (
                     <li className="nav-item active">
                         <NavLink className="nav-link" to={"/conferences"}>
-                            Conferences
+                            Conférences
                         </NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to={"/userAccess"}>
-                            Gestion des accès
+                    )}
+                    <li className="nav-item active">
+                        <NavLink className="nav-link" to={"/contact"}>
+                            Contact
                         </NavLink>
                     </li>
                 </ul>
                 <ul className="navbar-nav ml-auto">
+                {authAPI.isAuthenticated() && (
+                    <li className="nav-item mr-3">
+                        <NavLink className="nav-link" to={"/userAccess"}>
+                            Accès
+                        </NavLink>
+                    </li>)}
                     {!isAuthenticated && <>
                         <li className="nav-item">
                             <NavLink to={"/register"} className="btn btn-light ml-2 mr-2">
@@ -55,7 +63,7 @@ const Navbar = ({ history }) => {
                         </li>
                     </> ||
                     <li className="nav-item">
-                        <button onClick={handleLogout} className={"btn btn-danger"}>Déconnexion</button>
+                        <button onClick={handleLogout} className={"btn btn-outline-light"}>Déconnexion</button>
                     </li>
                     }
                 </ul>

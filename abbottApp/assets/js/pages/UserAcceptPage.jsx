@@ -47,22 +47,27 @@ const UserAcceptPage = () => {
     return(
         <>
             <h1>Liste des utilisateurs</h1>
-            <table className="table table-hover">
-                <thead>
+            <div className="row justify-content-center">
+
+<div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+<table className="table table-hover">
+    <thead className="bg-light">
                 <tr>
                     <th>Nom</th>
-                    <th>email</th>
-                    <th>Est accepté ?</th>
-                    <th></th>
+                    <th>Prénom</th>
+                    <th className="text-center">Email</th>
+                    <th className="text-center">Est accepté ?</th>
+                    <th className="text-center">\</th>
                 </tr>
                 </thead>
                 <tbody>
                 {unacceptedUsers.map(unacceptedUser =>
                     <tr key={unacceptedUser.id}>
-                        <td>{unacceptedUser.lastName + " " + unacceptedUser.firstName}</td>
-                        <td>{unacceptedUser.email}</td>
-                        <td>{unacceptedUser.isAccepted && <i className="fas fa-check"></i> || <i className="fas fa-times"></i>}</td>
-                        <td>
+                        <td>{unacceptedUser.lastName}</td>
+                        <td>{unacceptedUser.firstName}</td>
+                        <td className="text-center">{unacceptedUser.email}</td>
+                        <td className="text-center">{unacceptedUser.isAccepted && <i className="fas fa-check"></i> || <i className="fas fa-times"></i>}</td>
+                        <td className="text-center">
                             {unacceptedUser.isAccepted == false &&
                                 <>
                                     <button onClick={() => Accept(unacceptedUser.id)}
@@ -81,8 +86,9 @@ const UserAcceptPage = () => {
                 )}
                 </tbody>
             </table>
+            </div>
+            </div>
         </>
     )
 }
-
 export default UserAcceptPage;

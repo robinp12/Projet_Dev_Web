@@ -6,10 +6,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ConferenceRepository")
- * @ApiResource
+ * @ApiResource(
+ *  normalizationContext={
+ *      "groups"={"conferences_read"}
+ *  }
+ * )
  */
 class Conference
 {
@@ -17,52 +23,68 @@ class Conference
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"conferences_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"conferences_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"conferences_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="time")
+     * @Groups({"conferences_read"})
      */
     private $hourStart;
 
     /**
      * @ORM\Column(type="time", nullable=true)
+     * @Groups({"conferences_read"})
      */
     private $hourEnd;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"conferences_read"})
      */
     private $informations;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"conferences_read"})
      */
     private $room;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="conferences")
+     * @Groups({"conferences_read"})
      */
     private $event;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="conference")
+     * @Groups({"conferences_read"})
      */
     private $speakers;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Participant", mappedBy="conference")
+     * @Groups({"conferences_read"})
+     */
+    private $participants;
 
     public function __construct()
     {
         $this->speakers = new ArrayCollection();
+        $this->participants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,6 +201,37 @@ class Conference
             // set the owning side to null (unless already changed)
             if ($speaker->getConference() === $this) {
                 $speaker->setConference(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->contains($participant)) {
+            $this->participants->removeElement($participant);
+            // set the owning side to null (unless already changed)
+            if ($participant->getEvent() === $this) {
+                $participant->setEvent(null);
             }
         }
 

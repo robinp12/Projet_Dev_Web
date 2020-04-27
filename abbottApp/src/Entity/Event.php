@@ -53,16 +53,11 @@ class Event
      */
     private $admins;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Participant", mappedBy="event")
-     */
-    private $participants;
 
     public function __construct()
     {
         $this->conferences = new ArrayCollection();
         $this->admins = new ArrayCollection();
-        $this->participants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -186,37 +181,6 @@ class Event
             // set the owning side to null (unless already changed)
             if ($admin->getEvent() === $this) {
                 $admin->setEvent(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Participant[]
-     */
-    public function getParticipants(): Collection
-    {
-        return $this->participants;
-    }
-
-    public function addParticipant(Participant $participant): self
-    {
-        if (!$this->participants->contains($participant)) {
-            $this->participants[] = $participant;
-            $participant->setEvent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeParticipant(Participant $participant): self
-    {
-        if ($this->participants->contains($participant)) {
-            $this->participants->removeElement($participant);
-            // set the owning side to null (unless already changed)
-            if ($participant->getEvent() === $this) {
-                $participant->setEvent(null);
             }
         }
 

@@ -3,6 +3,7 @@ import Field from "./../components/forms/Fields";
 import { Link } from "react-router-dom";
 import UsersAPI from "../services/usersAPI";
 import { toast } from "react-toastify";
+import Header from "../components/Header";
 
 const RegisterPage = ({ history }) => {
     const [user, setUser] = useState({
@@ -62,7 +63,7 @@ const RegisterPage = ({ history }) => {
 
     return (
         <>
-            <h1>Inscription</h1>
+            <Header title={"Inscription"}/>
             <form onSubmit={handleSubmit}>
                 <Field
                     name="firstName"
