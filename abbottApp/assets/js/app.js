@@ -28,7 +28,7 @@ const App = () => {
         <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated}}>
             <HashRouter>
                 <NavBarWIthRouter/>
-                <main className="container pb-3 jumbotron">
+                <main className="container pb-3 pt-5 jumbotron mt-5">
                     <Switch>
                         <Route
                             path="/login"

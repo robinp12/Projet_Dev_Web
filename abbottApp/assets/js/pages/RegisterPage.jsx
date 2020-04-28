@@ -114,11 +114,11 @@ const RegisterPage = ({ history }) => {
                 {/*        Je suis un médecin*/}
                 {/*    </label>*/}
                 {/*</div>*/}
-                <div className="form-group mt-5">
-                    <button type="submit" className="btn btn-success">
+                <div className="form-group mt-5 text-center">
+                    <button type="submit" className="btn btn-primary">
                         Confirmation
                     </button>
-                    <Link to="/login" className="btn btn-link">
+                    <Link to="/login" className=" ml-3 btn btn-secondary">
                         J'ai déjà un compte
                     </Link>
                 </div>

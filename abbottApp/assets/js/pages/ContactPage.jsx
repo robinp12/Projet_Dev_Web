@@ -8,6 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Header from '../components/Header';
 const Contact = props => {
 
 
@@ -26,9 +27,7 @@ const Contact = props => {
         
        
 <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Contactez-nous!
-      </Typography>
+    <Header title={"Contactez-nous !"} />
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField

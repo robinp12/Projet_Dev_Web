@@ -45,6 +45,7 @@ const AddConference = (props) => {
         }
         try{
             await ConferencesAPI.create(newConf);
+            setErrors("");
         } catch (error) {
             if(error.response.data.violations){
                 console.log(error.response.data.violations);
@@ -127,7 +128,7 @@ const ConferencePage = props => {
                         {/*<td>{conference.getHourFormat}</td>*/}
                         {/*<td>{conference.hourEnd}</td>*/}
                         <td className="text-center">
-                            <button onClick={() => handleDelete(conference.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                            <button onClick={() => handleDelete(conference.id)} className="btn btn-sm btn-outline-danger">Supprimer</button>
                         </td>
                     </tr>
                  )}

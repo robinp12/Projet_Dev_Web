@@ -58,19 +58,19 @@ const HomePage = props => {
             {authAPI.isAuthenticated() &&
             <>
                 {conferences.map((conf,index) =>
-                <div key={index} className="card">
+                <div key={index} className="card border-primary">
                     <div className="card-body">
                     <div className="card-title">
                         <span className={"m-3"}>{conf.name}</span>
                     </div>
-                        <p className="card-text">{conf.description}</p>
+                        <p className="card-text" >{conf.description}</p>
                         <p className="card-text">
                             <small className="text-muted">1 days left
                                 <a href="#/conferencedetails" className="btn btn-primary btn-sm float-right mr-3">Voir plus</a>
                             {!conf["user"].includes("/api/users/"+idUser) &&
-                            <button onClick={()=> subscribe(conf.id)} className="btn btn-sm btn-success float-right mr-2">S'inscire</button>
+                            <button onClick={()=> subscribe(conf.id)} className="btn btn-sm btn-outline-primary float-right mr-2">S'inscire</button>
                             ||
-                            <button onClick={()=> unSubscribe(index)} className="btn btn-sm btn-danger float-right mr-2">Se désinscrire</button>
+                            <button onClick={()=> unSubscribe(index)} className="btn btn-sm btn-outline-danger float-right mr-2">Se désinscrire</button>
                             }
                             </small>
                         </p>

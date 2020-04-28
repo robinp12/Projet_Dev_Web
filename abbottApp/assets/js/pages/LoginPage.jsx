@@ -42,8 +42,8 @@ const LoginPage = ({ history}) => {
                        placeholder={'Adresse email de Connexion'} onChange={handleChange} type={"email"} error={error}/>
                 <Field label={"Mot de passe"} name={"password"} value={credentials.password} onChange={handleChange}
                        type={"password"} error={""}/>
-                <div className="form-group">
-                    <button type={"submit"} className={"btn btn-success"}>Se connecter</button>
+                <div className="form-group text-center">
+                    <button type={"submit"} className={"btn btn-primary"}>Se connecter</button>
                 </div>
             </form>
         </>
