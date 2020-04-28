@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert; // Symfony's built-in constraints
+
 
 
 /**
@@ -30,6 +32,8 @@ class Conference
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"conferences_read"})
+     * @Assert\NotBlank(message="Le nom de la conférence est obligatoire")
+     * @Assert\Length(min=3, minMessage="Le nom de la conférence doit faire entre 3 et 255 caractères", max=255, maxMessage="Le nom de la conférence doit faire entre 2 et 255 caractères")
      */
     private $name;
 
@@ -40,22 +44,17 @@ class Conference
     private $description;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="datetime")
      * @Groups({"conferences_read"})
      */
-    private $hourStart;
+    private $start;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"conferences_read"})
      */
-    private $hourEnd;
+    private $end;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     * @Groups({"conferences_read"})
-     */
-    private $informations;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -63,11 +62,6 @@ class Conference
      */
     private $room;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="conferences")
-     * @Groups({"conferences_read"})
-     */
-    private $event;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="conference")
@@ -116,38 +110,26 @@ class Conference
         return $this;
     }
 
-    public function getHourStart(): ?\DateTimeInterface
+    public function getStart(): ?\DateTimeInterface
     {
-        return $this->hourStart;
+        return $this->start;
     }
 
-    public function setHourStart(\DateTimeInterface $hourStart): self
+    public function setStart(\DateTimeInterface $start): self
     {
-        $this->hourStart = $hourStart;
+        $this->start = $start;
 
         return $this;
     }
 
-    public function getHourEnd(): ?\DateTimeInterface
+    public function getEnd(): ?\DateTimeInterface
     {
-        return $this->hourEnd;
+        return $this->end;
     }
 
-    public function setHourEnd(?\DateTimeInterface $hourEnd): self
+    public function setEnd(?\DateTimeInterface $end): self
     {
-        $this->hourEnd = $hourEnd;
-
-        return $this;
-    }
-
-    public function getInformations(): ?string
-    {
-        return $this->informations;
-    }
-
-    public function setInformations(?string $informations): self
-    {
-        $this->informations = $informations;
+        $this->end = $end;
 
         return $this;
     }
@@ -164,17 +146,6 @@ class Conference
         return $this;
     }
 
-    public function getEvent(): ?Event
-    {
-        return $this->event;
-    }
-
-    public function setEvent(?Event $event): self
-    {
-        $this->event = $event;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Speaker[]

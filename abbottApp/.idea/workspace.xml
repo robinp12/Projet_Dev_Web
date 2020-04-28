@@ -153,9 +153,10 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../TFE/AppFoot" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -198,6 +199,7 @@
       <workItem from="1587215610423" duration="599000" />
       <workItem from="1587387960539" duration="17695000" />
       <workItem from="1587498993989" duration="1332000" />
+      <workItem from="1588071568437" duration="6797000" />
     </task>
     <servers />
   </component>

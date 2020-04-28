@@ -8,7 +8,6 @@ function logout() {
 }
 
 function authenticate(credentials){
-    console.log(credentials);
     return axios
         .post("http://localhost:8000/api/login_check", credentials)
         .then(response => response.data.token)
@@ -37,10 +36,7 @@ function setup(){
     const token = window.localStorage.getItem(("authToken"));
 
     if (token) {
-        const { exp: expiration } = jwtDecode(token);
-        if (expiration > new Date().getTime() / 1000) {
-            setAxiosToken(token);
-        }
+        setAxiosToken(token);
     }
 }
 
@@ -48,11 +44,7 @@ function isAuthenticated(){
     const token = window.localStorage.getItem(("authToken"));
 
     if (token) {
-        const { exp: expiration } = jwtDecode(token);
-        if (expiration > new Date().getTime() / 1000) {
-            return true;
-        }
-        return false;
+        return true
     }
     return false
 }

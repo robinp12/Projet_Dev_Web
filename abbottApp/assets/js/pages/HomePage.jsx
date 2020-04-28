@@ -60,16 +60,18 @@ const HomePage = props => {
                 {conferences.map((conf,index) =>
                 <div key={index} className="card">
                     <div className="card-body">
-                    <div className="card-title">{conf.name}</div>
+                    <div className="card-title">
+                        <span className={"m-3"}>{conf.name}</span>
+                        {!conf["user"].includes("/api/users/"+idUser) &&
+                        <button onClick={()=> subscribe(conf.id)} className="btn btn-sm btn-success">S'inscire</button>
+                        ||
+                        <button onClick={()=> unSubscribe(index)} className="btn btn-sm btn-danger">Se désinscrire</button>
+                        }
+                    </div>
                         <p className="card-text">{conf.description}</p>
                         <p className="card-text">
                             <small className="text-muted">1 days left
-                                {!conf["user"].includes("/api/users/"+idUser) &&
-                                    <button onClick={()=> subscribe(conf.id)} className="btn btn-success">S'inscire</button>
-                                    ||
-                                    <button onClick={()=> unSubscribe(index)} className="btn btn-danger">Se désinscrire</button>
-                                }
-                                <a href="#/conferencedetails" className="btn btn-primary float-right mr-3">Voir plus</a>
+                                <a href="#/conferencedetails" className="btn btn-primary btn-sm float-right mr-3">Voir plus</a>
                             </small>
                         </p>
                     </div>

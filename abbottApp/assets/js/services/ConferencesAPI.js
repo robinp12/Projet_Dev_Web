@@ -5,6 +5,11 @@ function findAllConferences() {
         .get("http://localhost:8000/api/conferences")
 }
 
+function create(conf) {
+    return axios
+        .post("http://localhost:8000/api/conferences", conf)
+}
+
 function subscribeConference(participant){
     return axios
         .post("http://localhost:8000/api/participants", participant)
@@ -16,5 +21,5 @@ function unSubscribeConference(id) {
 }
 
 export default{
-    findAllConferences, subscribeConference, unSubscribeConference
+    findAllConferences, create,  subscribeConference, unSubscribeConference
 }

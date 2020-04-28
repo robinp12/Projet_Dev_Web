@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerI8nFmdk\App_KernelDevDebugContainer([
     'container.build_hash' => 'I8nFmdk',
-    'container.build_id' => 'adaccd38',
-    'container.build_time' => 1588030351,
+    'container.build_id' => 'a8310633',
+    'container.build_time' => 1588090742,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerI8nFmdk');
