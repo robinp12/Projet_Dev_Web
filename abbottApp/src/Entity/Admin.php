@@ -27,12 +27,6 @@ class Admin
      */
     private $responsabilities;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="admins")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $event;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -62,15 +56,4 @@ class Admin
         return $this;
     }
 
-    public function getEvent(): ?Event
-    {
-        return $this->event;
-    }
-
-    public function setEvent(?Event $event): self
-    {
-        $this->event = $event;
-
-        return $this;
-    }
 }

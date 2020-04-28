@@ -6,10 +6,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert; // Symfony's built-in constraints
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ConferenceRepository")
- * @ApiResource
+ * @ApiResource(
+ *  normalizationContext={
+ *      "groups"={"conferences_read"}
+ *  }
+ * )
  */
 class Conference
 {
@@ -17,52 +25,60 @@ class Conference
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"conferences_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"conferences_read"})
+     * @Assert\NotBlank(message="Le nom de la conférence est obligatoire")
+     * @Assert\Length(min=3, minMessage="Le nom de la conférence doit faire entre 3 et 255 caractères", max=255, maxMessage="Le nom de la conférence doit faire entre 2 et 255 caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"conferences_read"})
      */
     private $description;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="datetime")
+     * @Groups({"conferences_read"})
      */
-    private $hourStart;
+    private $start;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"conferences_read"})
      */
-    private $hourEnd;
+    private $end;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $informations;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"conferences_read"})
      */
     private $room;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="conferences")
-     */
-    private $event;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="conference")
+     * @Groups({"conferences_read"})
      */
     private $speakers;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Participant", mappedBy="conference")
+     * @Groups({"conferences_read"})
+     */
+    private $participants;
 
     public function __construct()
     {
         $this->speakers = new ArrayCollection();
+        $this->participants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,38 +110,26 @@ class Conference
         return $this;
     }
 
-    public function getHourStart(): ?\DateTimeInterface
+    public function getStart(): ?\DateTimeInterface
     {
-        return $this->hourStart;
+        return $this->start;
     }
 
-    public function setHourStart(\DateTimeInterface $hourStart): self
+    public function setStart(\DateTimeInterface $start): self
     {
-        $this->hourStart = $hourStart;
+        $this->start = $start;
 
         return $this;
     }
 
-    public function getHourEnd(): ?\DateTimeInterface
+    public function getEnd(): ?\DateTimeInterface
     {
-        return $this->hourEnd;
+        return $this->end;
     }
 
-    public function setHourEnd(?\DateTimeInterface $hourEnd): self
+    public function setEnd(?\DateTimeInterface $end): self
     {
-        $this->hourEnd = $hourEnd;
-
-        return $this;
-    }
-
-    public function getInformations(): ?string
-    {
-        return $this->informations;
-    }
-
-    public function setInformations(?string $informations): self
-    {
-        $this->informations = $informations;
+        $this->end = $end;
 
         return $this;
     }
@@ -142,17 +146,6 @@ class Conference
         return $this;
     }
 
-    public function getEvent(): ?Event
-    {
-        return $this->event;
-    }
-
-    public function setEvent(?Event $event): self
-    {
-        $this->event = $event;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Speaker[]
@@ -179,6 +172,37 @@ class Conference
             // set the owning side to null (unless already changed)
             if ($speaker->getConference() === $this) {
                 $speaker->setConference(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->contains($participant)) {
+            $this->participants->removeElement($participant);
+            // set the owning side to null (unless already changed)
+            if ($participant->getEvent() === $this) {
+                $participant->setEvent(null);
             }
         }
 

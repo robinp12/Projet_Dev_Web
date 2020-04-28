@@ -26,8 +26,6 @@ function findUnaccepted(){
         .then(response => response.data["hydra:member"]);
 }
 
-
-
 export default {
     findAll, create, update, deleteUser, findUnaccepted
 }

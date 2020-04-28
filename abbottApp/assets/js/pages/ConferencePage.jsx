@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import Header from "../components/Header";
 import Fields from "../components/forms/Fields"
+<<<<<<< HEAD
 
 const AddConference = () => {
     return (
@@ -16,6 +17,77 @@ const AddConference = () => {
                     <div className="col-lg-6">
                         <Fields name={"end"} label={"Heure de fin"} placeholder={"Fin"} type={"time"}/>
                     </div>
+=======
+import ConferencesAPI from "../services/ConferencesAPI";
+import {toast} from "react-toastify";
+
+const AddConference = (props) => {
+
+    const [conf, setConf] = useState({
+        name: "",
+        description: "",
+        day: new Date().toISOString().slice(0,10),
+        start: "",
+        end: ""
+    });
+
+    const [errors, setErrors] = useState({
+        name: "",
+        start: ""
+    });
+
+    const handleChange = ({ currentTarget }) => {
+        const { name, value } = currentTarget;
+        setConf({...conf, [name]: value});
+        
+    };
+
+    const handleSubmit = async () => {
+        console.log(conf.start);
+        if (conf.start == ""){
+            console.log("oui");
+            const apiErrors = {};
+            apiErrors["start"] = "La conférence doit avoir une heure de début";
+            setErrors(apiErrors);
+            return ;
+        }
+        let newConf = JSON.parse(JSON.stringify(conf));
+        newConf["start"] = new Date(conf.day + " " + conf.start);
+        if (newConf.end == ""){
+            newConf.end = conf.start;
+            newConf["end"] = new Date(conf.day + " " + newConf.end);
+        } else {
+            newConf["end"] = new Date(conf.day + " " + conf.end);
+        }
+        try{
+            await ConferencesAPI.create(newConf);
+        } catch (error) {
+            if(error.response.data.violations){
+                console.log(error.response.data.violations);
+                const apiErrors = {};
+                error.response.data.violations.forEach(violation => {
+                    apiErrors[violation.propertyPath] = violation.message;
+                });
+                setErrors(apiErrors);
+            }
+        } 
+    }
+
+    return (
+        <>
+        <div className="add">
+                <Fields className name={"name"} label={"Nom"} placeholder={"Nom"} value={conf.name} onChange={handleChange} error={errors.name}/>
+                <Fields name={"description"} label={"Description"} placeholder={"Description"} type={"textarea"} value={conf.description} onChange={handleChange}/>
+                <Fields name={"day"} label={"jour de la conférence"} placeholder={"Jour de la conférence"} type={"date"} value={conf.day}  onChange={handleChange}/>
+                <div className="row">
+                    <div className="col-lg-6">
+                        <Fields name={"start"} label={"Heure de début"} placeholder={"Début"} type={"time"} value={conf.start} onChange={handleChange} error={errors.start}/>
+                    </div>
+                    <div className="col-lg-6">
+                        <Fields name={"end"} label={"Heure de fin"} placeholder={"Fin"} type={"time"} value={conf.end} onChange={handleChange}/>
+                    </div>
+                    <button type="button" onClick={handleSubmit} className="btn btn-outline-success ml-auto">Ajouter</button>
+>>>>>>> d2ff85c632eff6deb80991f01e758a5281ad86d6
                 </div>
         </div>
         <br/>
