@@ -57,7 +57,7 @@ class AppFixtures extends Fixture
         for($e=0;$e<10;$e++){
             $conference = new Conference();
             $conference->setName("Conference $faker->firstname")
-            ->setHourStart(new DateTime())
+            ->setStart(new DateTime())
             ->setDescription($faker->paragraph($nbSentences = 4));
             $manager->persist($conference);
         }

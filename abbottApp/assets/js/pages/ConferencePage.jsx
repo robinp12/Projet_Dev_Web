@@ -2,22 +2,6 @@ import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import Header from "../components/Header";
 import Fields from "../components/forms/Fields"
-<<<<<<< HEAD
-
-const AddConference = () => {
-    return (
-        <>
-        <div className="add">
-                <Fields className name={"Nom"} label={"Nom"} placeholder={"Nom"} />
-                <Fields name={"Description"} label={"Description"} placeholder={"Description"} type={"textarea"}/>
-                <div className="row">
-                    <div className="col-lg-6">
-                        <Fields name={"start"} label={"Heure de début"} placeholder={"Début"} type={"time"}/>
-                    </div>
-                    <div className="col-lg-6">
-                        <Fields name={"end"} label={"Heure de fin"} placeholder={"Fin"} type={"time"}/>
-                    </div>
-=======
 import ConferencesAPI from "../services/ConferencesAPI";
 import {toast} from "react-toastify";
 
@@ -87,7 +71,6 @@ const AddConference = (props) => {
                         <Fields name={"end"} label={"Heure de fin"} placeholder={"Fin"} type={"time"} value={conf.end} onChange={handleChange}/>
                     </div>
                     <button type="button" onClick={handleSubmit} className="btn btn-outline-success ml-auto">Ajouter</button>
->>>>>>> d2ff85c632eff6deb80991f01e758a5281ad86d6
                 </div>
         </div>
         <br/>
