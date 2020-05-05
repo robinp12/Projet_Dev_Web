@@ -71,7 +71,7 @@ const AddConference = (props) => {
                     <div className="col-lg-6">
                         <Fields name={"end"} label={"Heure de fin"} placeholder={"Fin"} type={"time"} value={conf.end} onChange={handleChange}/>
                     </div>
-                    <button type="button" onClick={handleSubmit} className="btn btn-outline-success ml-auto">Ajouter</button>
+                    <button type="button" onClick={handleSubmit} className="btn btn-outline-primary ml-auto">Ajouter</button>
                 </div>
         </div>
         <br/>
