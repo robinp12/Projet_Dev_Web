@@ -62,9 +62,16 @@ const Navbar = ({ history }) => {
                             </NavLink>
                         </li>
                     </> ||
-                    <li className="nav-item">
-                        <button onClick={handleLogout} className={"btn btn-outline-light"}>Déconnexion</button>
-                    </li>
+                        <>
+                            <li className="nav-item">
+                                <NavLink to={"/profile"} className="nav-link mr-3">
+                                    Profile
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <button onClick={handleLogout} className={"btn btn-outline-light"}>Déconnexion</button>
+                            </li>
+                        </>
                     }
                 </ul>
             </div>

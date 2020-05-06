@@ -14,6 +14,8 @@ import UserAcceptPage from "./pages/UserAcceptPage";
 import Footer from './components/Footer';
 import ContactPage from "./pages/ContactPage";
 import conferencedetails from './pages/Conferencedetails';
+import DateFunctions from "./services/DateFunctions";
+import ProfilPage from "./pages/ProfilPage";
 
 authAPI.setup();
 
@@ -38,6 +40,7 @@ const App = () => {
                         <PrivateRoute path={"/conferencedetails"} component={conferencedetails}/>
                         <PrivateRoute path={"/conferences"} component={ConferencePage}/>
                         <PrivateRoute path={"/userAccess"} component={UserAcceptPage}/>
+                        <PrivateRoute path={"/profile"} component={ProfilPage}/>
                         <Route path={"/register"} component={RegisterPage}/>
                         <Route path={"/"} component={HomePage}/>
                     </Switch>

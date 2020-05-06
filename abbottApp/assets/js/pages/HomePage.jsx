@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import { useState } from 'react';
 import authAPI from '../services/authAPI';
 import ConferencesAPI from "../services/ConferencesAPI";
+import DateFunctions from "../services/DateFunctions";
 
 const HomePage = props => {
 
@@ -17,6 +18,7 @@ const HomePage = props => {
             .then(response => response.data["hydra:member"])
             .catch(error => console.log(error.response));
         for (let i = 0; i < data.length; i++){
+            data[i]["dayLeft"] = DateFunctions.getDaysLeft(data[i]["start"]);
             data[i]["user"] = JSON.parse(JSON.stringify(data[i]["participants"]));
             for (let j = 0; j < data[i]["participants"].length; j++){
                 data[i]["user"][j] = data[i]["participants"][j]["user"];
@@ -24,6 +26,7 @@ const HomePage = props => {
         }
         setConferences(data);
     }
+
 
      useEffect(() => {
        fetchConferences()
@@ -39,7 +42,6 @@ const HomePage = props => {
      }
 
      const unSubscribe = async (index) => {
-         console.log(index);
          let participants = conferences[index]["participants"];
          for (let i = 0; i < participants.length; i++){
             if ("/api/users/"+ idUser == participants[i]["user"]){
@@ -49,8 +51,6 @@ const HomePage = props => {
          }
          setReload(reload+1);
      }
-
-     console.log(conferences);
 
     return (<>
         <Header title={"Futures conférences"}/>
@@ -70,7 +70,7 @@ const HomePage = props => {
                     </div>
                         <p className="card-text">{conf.description}</p>
                         <p className="card-text">
-                            <small className="text-muted">1 days left
+                            <small className="text-muted">{conf.dayLeft} days left
                                 <a href="#/conferencedetails" className="btn btn-primary btn-sm float-right mr-3">Voir plus</a>
                             </small>
                         </p>

@@ -192,32 +192,33 @@
     },
     {
         "name": "doctrine/annotations",
-        "version": "v1.8.0",
-        "version_normalized": "1.8.0.0",
+        "version": "1.10.2",
+        "version_normalized": "1.10.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/annotations.git",
-            "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc"
+            "reference": "b9d758e831c70751155c698c2f7df4665314a1cb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/annotations/zipball/904dca4eb10715b92569fbcd79e201d5c349b6bc",
-            "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc",
+            "url": "https://api.github.com/repos/doctrine/annotations/zipball/b9d758e831c70751155c698c2f7df4665314a1cb",
+            "reference": "b9d758e831c70751155c698c2f7df4665314a1cb",
             "shasum": ""
         },
         "require": {
             "doctrine/lexer": "1.*",
+            "ext-tokenizer": "*",
             "php": "^7.1"
         },
         "require-dev": {
             "doctrine/cache": "1.*",
             "phpunit/phpunit": "^7.5"
         },
-        "time": "2019-10-01T18:55:10+00:00",
+        "time": "2020-04-20T09:18:32+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.7.x-dev"
+                "dev-master": "1.9.x-dev"
             }
         },
         "installation-source": "dist",
@@ -1548,7 +1549,8 @@
             "logging",
             "monolog",
             "productivity"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "egulias/email-validator",
@@ -6928,17 +6930,17 @@
     },
     {
         "name": "symfony/validator",
-        "version": "v5.0.5",
-        "version_normalized": "5.0.5.0",
+        "version": "v5.0.8",
+        "version_normalized": "5.0.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/validator.git",
-            "reference": "fb9c52b2fe3a8336b65f85b61dedbcc6c427c37b"
+            "reference": "909c45839d32f9e4c09d4f155a7d761201e7e47e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/validator/zipball/fb9c52b2fe3a8336b65f85b61dedbcc6c427c37b",
-            "reference": "fb9c52b2fe3a8336b65f85b61dedbcc6c427c37b",
+            "url": "https://api.github.com/repos/symfony/validator/zipball/909c45839d32f9e4c09d4f155a7d761201e7e47e",
+            "reference": "909c45839d32f9e4c09d4f155a7d761201e7e47e",
             "shasum": ""
         },
         "require": {
@@ -6988,7 +6990,7 @@
             "symfony/translation": "For translating validation errors.",
             "symfony/yaml": ""
         },
-        "time": "2020-02-29T10:07:09+00:00",
+        "time": "2020-04-28T18:26:18+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

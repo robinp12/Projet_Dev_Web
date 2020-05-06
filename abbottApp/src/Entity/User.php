@@ -10,6 +10,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Validator\Constraints as Assert; // Symfony's built-in constraints
+
 
 
 /**
@@ -30,6 +32,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="L'email doit être renseigné !")
+     * @Assert\Email(message="L'adresse email doit avoir un format valide !")
      */
     private $email;
 
@@ -46,16 +50,21 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="L'utilisateur doit avoir un nom!")
+     * @Assert\Length(min=2, minMessage="Le nom doit faire au moins 2 caractères", max=255, maxMessage="Le nom doit faire moins de 255 caractères")
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="L'utilisateur doit avoir un prénom!")
+     * @Assert\Length(min=2, minMessage="Le prénom doit faire au moins 2 caractères", max=255, maxMessage="Le prénom doit faire moins de 255 caractères")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(min=3, minMessage="Le nom de la conférence doit faire entre 3 et 255 caractères", max=255, maxMessage="Le nom de la conférence doit faire entre 2 et 255 caractères")
      */
     private $telephone;
 

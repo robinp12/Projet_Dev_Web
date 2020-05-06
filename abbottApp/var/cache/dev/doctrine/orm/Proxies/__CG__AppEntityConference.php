@@ -66,10 +66,10 @@ class Conference extends \App\Entity\Conference implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'hourStart', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'hourEnd', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'informations', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'room', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'event', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'speakers', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'participants'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'start', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'end', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'room', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'speakers', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'participants'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'hourStart', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'hourEnd', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'informations', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'room', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'event', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'speakers', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'participants'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'start', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'end', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'room', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'speakers', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'participants'];
     }
 
     /**
@@ -238,67 +238,45 @@ class Conference extends \App\Entity\Conference implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getHourStart(): ?\DateTimeInterface
+    public function getStart(): ?\DateTimeInterface
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHourStart', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStart', []);
 
-        return parent::getHourStart();
+        return parent::getStart();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setHourStart(\DateTimeInterface $hourStart): \App\Entity\Conference
+    public function setStart(\DateTimeInterface $start): \App\Entity\Conference
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHourStart', [$hourStart]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStart', [$start]);
 
-        return parent::setHourStart($hourStart);
+        return parent::setStart($start);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getHourEnd(): ?\DateTimeInterface
+    public function getEnd(): ?\DateTimeInterface
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHourEnd', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEnd', []);
 
-        return parent::getHourEnd();
+        return parent::getEnd();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setHourEnd(?\DateTimeInterface $hourEnd): \App\Entity\Conference
+    public function setEnd(?\DateTimeInterface $end): \App\Entity\Conference
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHourEnd', [$hourEnd]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEnd', [$end]);
 
-        return parent::setHourEnd($hourEnd);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getInformations(): ?string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInformations', []);
-
-        return parent::getInformations();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setInformations(?string $informations): \App\Entity\Conference
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInformations', [$informations]);
-
-        return parent::setInformations($informations);
+        return parent::setEnd($end);
     }
 
     /**
@@ -321,28 +299,6 @@ class Conference extends \App\Entity\Conference implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRoom', [$room]);
 
         return parent::setRoom($room);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getEvent(): ?\App\Entity\Event
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvent', []);
-
-        return parent::getEvent();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setEvent(?\App\Entity\Event $event): \App\Entity\Conference
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEvent', [$event]);
-
-        return parent::setEvent($event);
     }
 
     /**
