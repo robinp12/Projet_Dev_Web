@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import ShareIcon from "@material-ui/icons/Share";
 import CardMedia from "@material-ui/core/CardMedia";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -22,6 +19,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/Inbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import ConferencesAPI from "../services/ConferencesAPI";
+import Axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,13 +64,14 @@ const useStyles = makeStyles((theme) => ({
 const conferencedetails = (props) => {
   const classes = useStyles();
   const [conferences, setConferences] = useState([]);
-  const id = window.location.hash.split("/")[2];
+  const id = props.match.params?.id;
 
   const fetchConferences = async () => {
-    const data = await ConferencesAPI.findAllConferences()
-      .then((response) => response.data["hydra:member"])
+    await ConferencesAPI.find(id)
+      .then((response) => {
+        setConferences(response.data);
+      })      
       .catch((error) => console.log(error.response));
-    setConferences(data);
   };
   useEffect(() => {
     fetchConferences();
@@ -81,9 +80,7 @@ const conferencedetails = (props) => {
   return (
     <div>
       <h1>Conférences détails</h1>
-      {conferences.map((e) => (
-        <div key={e.id}>
-          {e.id == id && (
+        <div>
             <div className={classes.root}>
               <Grid container spacing={3}>
                 {/* Mettre l'image */}
@@ -101,11 +98,12 @@ const conferencedetails = (props) => {
                     {/* Nom de la conférence */}
                     {/* Date de la conférence */}
                     <CardHeader
-                      title={e?.name}
+                      title={conferences?.name}
                       subheader={new Date(
-                        e?.start
+                        conferences?.start
                       ).toLocaleString()}
                     />
+                    {console.log(conferences)}
                     <CardContent>
                       {/* Petite description */}
                       <Typography
@@ -164,22 +162,20 @@ const conferencedetails = (props) => {
                         color="textSecondary"
                         component="p"
                       >
-                        {e?.description}
-                        {e?.description}
-                        {e?.description}
-                        {e?.description}
-                        {e?.description}
-                        {e?.description}
-                        {e?.description}
+                        {conferences?.description}
+                        {conferences?.description}
+                        {conferences?.description}
+                        {conferences?.description}
+                        {conferences?.description}
+                        {conferences?.description}
+                        {conferences?.description}
                       </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
               </Grid>
             </div>
-          )}
         </div>
-      ))}
     </div>
   );
 };

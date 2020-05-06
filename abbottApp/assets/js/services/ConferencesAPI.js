@@ -4,6 +4,10 @@ function findAllConferences() {
     return axios
         .get("http://localhost:8000/api/conferences")
 }
+function find(id) {
+    return axios
+        .get("http://localhost:8000/api/conferences/"+id)
+}
 
 function create(conf) {
     return axios
@@ -21,5 +25,5 @@ function unSubscribeConference(id) {
 }
 
 export default{
-    findAllConferences, create,  subscribeConference, unSubscribeConference
+    findAllConferences, find, create,  subscribeConference, unSubscribeConference
 }

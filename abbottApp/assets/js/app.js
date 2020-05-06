@@ -35,7 +35,7 @@ const App = () => {
                             render={ props => <LoginPage onLogin={setIsAuthenticated} {...props}/> }
                         />
                         <Route path={"/contact"} component={ContactPage}/>
-                        <PrivateRoute path={"/conferencedetails"} component={conferencedetails}/>
+                        <PrivateRoute path={"/conferencedetails/:id"} component={conferencedetails}/>
                         <PrivateRoute path={"/conferences"} component={ConferencePage}/>
                         <PrivateRoute path={"/userAccess"} component={UserAcceptPage}/>
                         <Route path={"/register"} component={RegisterPage}/>
