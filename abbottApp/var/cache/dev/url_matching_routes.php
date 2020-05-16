@@ -39,39 +39,49 @@ return [
                     .'|(?:/(index)(?:\\.([^/]++))?)?(*:234)'
                     .'|/(?'
                         .'|docs(?:\\.([^/]++))?(*:265)'
-                        .'|con(?'
-                            .'|texts/(.+)(?:\\.([^/]++))?(*:304)'
-                            .'|ferences(?'
+                        .'|co(?'
+                            .'|n(?'
+                                .'|texts/(.+)(?:\\.([^/]++))?(*:307)'
+                                .'|ferences(?'
+                                    .'|(?:\\.([^/]++))?(?'
+                                        .'|(*:344)'
+                                    .')'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
+                                        .'|(*:382)'
+                                    .')'
+                                .')'
+                            .')'
+                            .'|mments(?'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:341)'
+                                    .'|(*:420)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:379)'
+                                    .'|(*:458)'
                                 .')'
                             .')'
                         .')'
                         .'|medecins(?'
                             .'|(?:\\.([^/]++))?(?'
-                                .'|(*:419)'
+                                .'|(*:498)'
                             .')'
                             .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                .'|(*:457)'
+                                .'|(*:536)'
                             .')'
                         .')'
                         .'|participants(?'
                             .'|(?:\\.([^/]++))?(?'
-                                .'|(*:500)'
+                                .'|(*:579)'
                             .')'
                             .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                .'|(*:538)'
+                                .'|(*:617)'
                             .')'
                         .')'
                         .'|users(?'
                             .'|(?:\\.([^/]++))?(?'
-                                .'|(*:574)'
+                                .'|(*:653)'
                             .')'
                             .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                .'|(*:612)'
+                                .'|(*:691)'
                             .')'
                         .')'
                     .')'
@@ -89,42 +99,52 @@ return [
         191 => [[['_route' => 'app_user_getinfosuser', '_controller' => 'App\\Controller\\UserController::getInfosUser'], ['id'], null, null, false, true, null]],
         234 => [[['_route' => 'api_entrypoint', '_controller' => 'api_platform.action.entrypoint', '_format' => '', '_api_respond' => 'true', 'index' => 'index'], ['index', '_format'], null, null, false, true, null]],
         265 => [[['_route' => 'api_doc', '_controller' => 'api_platform.action.documentation', '_format' => '', '_api_respond' => 'true'], ['_format'], null, null, false, true, null]],
-        304 => [[['_route' => 'api_jsonld_context', '_controller' => 'api_platform.jsonld.action.context', '_format' => 'jsonld', '_api_respond' => 'true'], ['shortName', '_format'], null, null, false, true, null]],
-        341 => [
+        307 => [[['_route' => 'api_jsonld_context', '_controller' => 'api_platform.jsonld.action.context', '_format' => 'jsonld', '_api_respond' => 'true'], ['shortName', '_format'], null, null, false, true, null]],
+        344 => [
             [['_route' => 'api_conferences_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Conference', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_conferences_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Conference', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        379 => [
+        382 => [
             [['_route' => 'api_conferences_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Conference', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_conferences_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Conference', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_conferences_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Conference', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_conferences_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Conference', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        419 => [
+        420 => [
+            [['_route' => 'api_comments_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Comment', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'api_comments_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Comment', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
+        ],
+        458 => [
+            [['_route' => 'api_comments_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Comment', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'api_comments_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Comment', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
+            [['_route' => 'api_comments_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Comment', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
+            [['_route' => 'api_comments_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Comment', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
+        ],
+        498 => [
             [['_route' => 'api_medecins_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Medecin', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_medecins_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Medecin', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        457 => [
+        536 => [
             [['_route' => 'api_medecins_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Medecin', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_medecins_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Medecin', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_medecins_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Medecin', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_medecins_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Medecin', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        500 => [
+        579 => [
             [['_route' => 'api_participants_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Participant', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_participants_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Participant', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        538 => [
+        617 => [
             [['_route' => 'api_participants_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Participant', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_participants_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Participant', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_participants_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Participant', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_participants_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Participant', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        574 => [
+        653 => [
             [['_route' => 'api_users_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_users_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        612 => [
+        691 => [
             [['_route' => 'api_users_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_users_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_users_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],

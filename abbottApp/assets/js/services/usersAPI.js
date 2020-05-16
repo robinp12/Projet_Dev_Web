@@ -6,6 +6,12 @@ function findAll() {
         .then(response => response.data["hydra:member"]);
 }
 
+function find(id) {
+    return axios
+        .get("http://localhost:8000/api/users/" + id)
+        .then(response => response.data);
+}
+
 function create (user){
     return axios
         .post("http://localhost:8000/api/users", user);
@@ -36,5 +42,5 @@ function postInfosUser(obj){
 }
 
 export default {
-    findAll, create, update, deleteUser, findUnaccepted, getInfosUser, postInfosUser
+    findAll, find, create, update, deleteUser, findUnaccepted, getInfosUser, postInfosUser
 }

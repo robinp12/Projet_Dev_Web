@@ -74,7 +74,11 @@ function dateFormatFr (date){
 function getDaysLeft (date){
     const d = new Date(date);
     const today = new Date();
-    return Math.round((d-today) / (1000*3600*24));
+    let diff = Math.round((d - today) / (1000*3600*24));
+    if (diff <  0) {
+        diff =  Math.round((today - d) / (1000*3600*24));
+    }
+    return diff;
 }
 
 export default { todayFormatYMD, dateFormatYMD, newDateTime, dateFormatFr, getDaysLeft }

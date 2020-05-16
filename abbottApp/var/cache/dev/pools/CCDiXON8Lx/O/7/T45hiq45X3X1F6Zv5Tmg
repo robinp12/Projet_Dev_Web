@@ -15,7 +15,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'A visual identifier that represents this user.',
             ],
             'readable' => [
-                true,
+                false,
             ],
             'writable' => [
                 false,

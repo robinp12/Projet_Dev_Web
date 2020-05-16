@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MedecinRepository")
@@ -21,11 +23,13 @@ class Medecin
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"users_read"})
      */
     private $inamiNumber;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"users_read"})
      */
     private $speciality;
 

@@ -16,6 +16,7 @@ import ContactPage from "./pages/ContactPage";
 import conferencedetails from './pages/Conferencedetails';
 import DateFunctions from "./services/DateFunctions";
 import ProfilPage from "./pages/ProfilPage";
+import UserProfilPage from "./pages/UserProfilPage";
 
 authAPI.setup();
 
@@ -37,9 +38,10 @@ const App = () => {
                             render={ props => <LoginPage onLogin={setIsAuthenticated} {...props}/> }
                         />
                         <Route path={"/contact"} component={ContactPage}/>
-                        <PrivateRoute path={"/conferencedetails"} component={conferencedetails}/>
+                        <PrivateRoute path={"/conferencedetails/:id"} component={conferencedetails}/>
                         <PrivateRoute path={"/conferences"} component={ConferencePage}/>
                         <PrivateRoute path={"/userAccess"} component={UserAcceptPage}/>
+                        <PrivateRoute path={"/profile/:id"} component={UserProfilPage}/>
                         <PrivateRoute path={"/profile"} component={ProfilPage}/>
                         <Route path={"/register"} component={RegisterPage}/>
                         <Route path={"/"} component={HomePage}/>

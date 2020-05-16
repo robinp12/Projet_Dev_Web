@@ -66,10 +66,10 @@ class Conference extends \App\Entity\Conference implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'start', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'end', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'room', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'speakers', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'participants'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'start', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'end', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'room', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'speakers', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'participants', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'comments'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'start', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'end', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'room', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'speakers', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'participants'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'start', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'end', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'room', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'speakers', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'participants', '' . "\0" . 'App\\Entity\\Conference' . "\0" . 'comments'];
     }
 
     /**
@@ -365,6 +365,39 @@ class Conference extends \App\Entity\Conference implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeParticipant', [$participant]);
 
         return parent::removeParticipant($participant);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getComments(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getComments', []);
+
+        return parent::getComments();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addComment(\App\Entity\Comment $comment): \App\Entity\Conference
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addComment', [$comment]);
+
+        return parent::addComment($comment);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeComment(\App\Entity\Comment $comment): \App\Entity\Conference
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeComment', [$comment]);
+
+        return parent::removeComment($comment);
     }
 
 }

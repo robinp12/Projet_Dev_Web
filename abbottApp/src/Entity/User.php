@@ -11,12 +11,18 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Symfony\Component\Validator\Constraints as Assert; // Symfony's built-in constraints
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={
+ *      "groups"={"users_read"}
+ *     }
+ * )
  * @UniqueEntity("email", message="Un utilisateur ayant cette adresse email existe déjà")
  * @ApiFilter(SearchFilter::class , properties={"email": "exact", "isAccepted": "exact"})
  *
@@ -27,6 +33,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"conferences_read", "users_read"})
      */
     private $id;
 
@@ -34,11 +41,14 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(message="L'email doit être renseigné !")
      * @Assert\Email(message="L'adresse email doit avoir un format valide !")
+     * @Groups({"users_read"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"users_read"})
+     *
      */
     private $roles = [];
 
@@ -52,6 +62,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="L'utilisateur doit avoir un nom!")
      * @Assert\Length(min=2, minMessage="Le nom doit faire au moins 2 caractères", max=255, maxMessage="Le nom doit faire moins de 255 caractères")
+     * @Groups({"conferences_read", "users_read"})
      */
     private $lastName;
 
@@ -59,17 +70,20 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="L'utilisateur doit avoir un prénom!")
      * @Assert\Length(min=2, minMessage="Le prénom doit faire au moins 2 caractères", max=255, maxMessage="Le prénom doit faire moins de 255 caractères")
+     * @Groups({"conferences_read", "users_read"})
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(min=3, minMessage="Le nom de la conférence doit faire entre 3 et 255 caractères", max=255, maxMessage="Le nom de la conférence doit faire entre 2 et 255 caractères")
+     * @Groups({"users_read"})
      */
     private $telephone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"users_read"})
      */
     private $addresse;
 
@@ -90,6 +104,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Medecin", mappedBy="user", cascade={"persist", "remove"})
+     * @Groups({"users_read"})
      */
     private $medecin;
 
@@ -98,11 +113,17 @@ class User implements UserInterface
      */
     private $isAccepted;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->admins = new ArrayCollection();
         $this->speakers = new ArrayCollection();
         $this->participants = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -349,6 +370,37 @@ class User implements UserInterface
     public function setIsAccepted(bool $isAccepted): self
     {
         $this->isAccepted = $isAccepted;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
+            }
+        }
 
         return $this;
     }
