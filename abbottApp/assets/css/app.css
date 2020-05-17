@@ -15,3 +15,7 @@ form{
     margin-left: 15%;
     margin-right: 15%;
 }
+
+#searchBar {
+    max-height: 40px;
+}

@@ -48,23 +48,7 @@ const UserProfilPage = props => {
         <>
             <div className="container">
                 <div className="row">
-                    <div className="col-6">
                         <h3 className={"mb-5 text-center"}>Profil de {user.firstName + " " + user.lastName}</h3>
-                    </div>
-                    <div className="col-6 float-right">
-                        <ReactSearchBox
-                            placeholder="Rechercher quelqu'un"
-                            data={allUsers}
-                            onSelect={record => goToProfile(record["key"])}
-                            onFocus={() => {
-                            }}
-                            onChange={() => {
-                            }}
-                            fuseConfigs={{
-                                threshold: 0.05,
-                            }}
-                        />
-                    </div>
                 </div>
 
                 <div className={"row"}>
@@ -80,7 +64,22 @@ const UserProfilPage = props => {
                             <p><b>spécialité: </b> {user.medecin.speciality}</p>
                         </div>
                     }
+                    <div className="col">
+                        <ReactSearchBox
+                            placeholder="Rechercher quelqu'un"
+                            data={allUsers}
+                            onSelect={record => goToProfile(record["key"])}
+                            onFocus={() => {
+                            }}
+                            onChange={() => {
+                            }}
+                            fuseConfigs={{
+                                threshold: 0.05,
+                            }}
+                        />
+                    </div>
                 </div>
+
             </div>
         </>
     )
