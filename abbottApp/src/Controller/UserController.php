@@ -45,15 +45,18 @@ class UserController extends AbstractController
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id' => $id]);
         $medecin = $user->getMedecin();
 
+        if(!is_null($medecin)){
+            $response["idMedecin"] = $medecin->getId();
+            $response["inamiNumber"] = $medecin->getInamiNumber();
+            $response["speciality"] = $medecin->getSpeciality();
+        }
+        
         $response["idUser"] = $user->getId();
-        $response["idMedecin"] = $medecin->getId();
         $response["firstName"] = $user->getFirstName();
         $response["lastName"] = $user->getLastName();
         $response["addresse"] = $user->getAddresse();
         $response["telephone"] = $user->getTelephone();
         $response["email"] = $user->getEmail();
-        $response["inamiNumber"] = $medecin->getInamiNumber();
-        $response["speciality"] = $medecin->getSpeciality();
 
         return $this->json($response);
     }
