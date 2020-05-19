@@ -157,7 +157,11 @@ class RangeValidator extends ConstraintValidator
         try {
             return $this->getPropertyAccessor()->getValue($object, $propertyPath);
         } catch (NoSuchPropertyException $e) {
+<<<<<<< HEAD
             throw new ConstraintDefinitionException(sprintf('Invalid property path "%s" provided to "%s" constraint: %s.', $propertyPath, \get_class($constraint), $e->getMessage()), 0, $e);
+=======
+            throw new ConstraintDefinitionException(sprintf('Invalid property path "%s" provided to "%s" constraint: '.$e->getMessage(), $propertyPath, \get_class($constraint)), 0, $e);
+>>>>>>> 3b59e7ece60f9c462cb23b900c660d5d48f7d516
         }
     }
 

@@ -6,6 +6,12 @@ function findAll() {
         .then(response => response.data["hydra:member"]);
 }
 
+function find(id) {
+    return axios
+        .get("http://localhost:8000/api/users/" + id)
+        .then(response => response.data);
+}
+
 function create (user){
     return axios
         .post("http://localhost:8000/api/users", user);
@@ -26,6 +32,15 @@ function findUnaccepted(){
         .then(response => response.data["hydra:member"]);
 }
 
+function getInfosUser(id){
+    return axios.get("http://localhost:8000/getInfosUser/"+id)
+        .then(response => response.data);
+}
+
+function postInfosUser(obj){
+    return axios.post("http://localhost:8000/postInfosUser", obj)
+}
+
 export default {
-    findAll, create, update, deleteUser, findUnaccepted
+    findAll, find, create, update, deleteUser, findUnaccepted, getInfosUser, postInfosUser
 }

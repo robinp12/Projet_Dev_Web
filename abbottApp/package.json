@@ -17,8 +17,12 @@
         "test": "jest"
     },
     "dependencies": {
+<<<<<<< HEAD
         "@babel/preset-typescript": "^7.9.0",
         "@material-ui/core": "^4.9.11",
+=======
+        "@material-ui/core": "^4.9.12",
+>>>>>>> 3b59e7ece60f9c462cb23b900c660d5d48f7d516
         "@material-ui/icons": "^4.9.1",
         "axios": "^0.18.1",
         "jwt-decode": "^2.2.0",
@@ -26,8 +30,13 @@
         "react-day-picker": "^7.4.8",
         "react-dom": "^16.8.6",
         "react-router-dom": "^5.0.0",
+<<<<<<< HEAD
         "react-toastify": "^5.5.0",
         "require": "^2.4.20",
         "toastify": "^2.0.0"
+=======
+        "react-search-box": "^2.0.2",
+        "react-toastify": "^5.5.0"
+>>>>>>> 3b59e7ece60f9c462cb23b900c660d5d48f7d516
     }
 }

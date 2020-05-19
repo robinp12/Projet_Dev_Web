@@ -1573,6 +1573,62 @@
         ]
     },
     {
+<<<<<<< HEAD
+=======
+        "name": "easycorp/easy-log-handler",
+        "version": "v1.0.9",
+        "version_normalized": "1.0.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/EasyCorp/easy-log-handler.git",
+            "reference": "224e1dfcf9455aceee89cd0af306ac097167fac1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/EasyCorp/easy-log-handler/zipball/224e1dfcf9455aceee89cd0af306ac097167fac1",
+            "reference": "224e1dfcf9455aceee89cd0af306ac097167fac1",
+            "shasum": ""
+        },
+        "require": {
+            "monolog/monolog": "~1.6|~2.0",
+            "php": ">=7.1",
+            "symfony/yaml": "^3.4|^4.0|^5.0"
+        },
+        "time": "2019-10-24T07:13:31+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "EasyCorp\\EasyLog\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Javier Eguiluz",
+                "email": "javiereguiluz@gmail.com"
+            },
+            {
+                "name": "Project Contributors",
+                "homepage": "https://github.com/EasyCorp/easy-log-handler"
+            }
+        ],
+        "description": "A handler for Monolog that optimizes log messages to be processed by humans instead of software. Improve your productivity with logs that are easy to understand.",
+        "homepage": "https://github.com/EasyCorp/easy-log-handler",
+        "keywords": [
+            "easy",
+            "log",
+            "logging",
+            "monolog",
+            "productivity"
+        ],
+        "abandoned": true
+    },
+    {
+>>>>>>> 3b59e7ece60f9c462cb23b900c660d5d48f7d516
         "name": "egulias/email-validator",
         "version": "2.1.17",
         "version_normalized": "2.1.17.0",
@@ -7893,6 +7949,7 @@
     },
     {
         "name": "symfony/validator",
+<<<<<<< HEAD
         "version": "v5.0.7",
         "version_normalized": "5.0.7.0",
         "source": {
@@ -7904,6 +7961,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/validator/zipball/fc459a3d66bda9c0f8231a4d44dddd6daf23db92",
             "reference": "fc459a3d66bda9c0f8231a4d44dddd6daf23db92",
+=======
+        "version": "v5.0.8",
+        "version_normalized": "5.0.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/validator.git",
+            "reference": "909c45839d32f9e4c09d4f155a7d761201e7e47e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/validator/zipball/909c45839d32f9e4c09d4f155a7d761201e7e47e",
+            "reference": "909c45839d32f9e4c09d4f155a7d761201e7e47e",
+>>>>>>> 3b59e7ece60f9c462cb23b900c660d5d48f7d516
             "shasum": ""
         },
         "require": {
@@ -7953,7 +8023,11 @@
             "symfony/translation": "For translating validation errors.",
             "symfony/yaml": ""
         },
+<<<<<<< HEAD
         "time": "2020-03-30T11:42:42+00:00",
+=======
+        "time": "2020-04-28T18:26:18+00:00",
+>>>>>>> 3b59e7ece60f9c462cb23b900c660d5d48f7d516
         "type": "library",
         "extra": {
             "branch-alias": {

@@ -51,6 +51,7 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: api/conferences, roles: IS_AUTHENTICATED_FULLY}
+        - { path: api/medecins, roles: IS_AUTHENTICATED_FULLY}
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - {
             path: ^/api/users,
