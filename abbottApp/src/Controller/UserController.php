@@ -50,6 +50,7 @@ class UserController extends AbstractController
             $response["inamiNumber"] = $medecin->getInamiNumber();
             $response["speciality"] = $medecin->getSpeciality();
         }
+        
         $response["idUser"] = $user->getId();
         $response["firstName"] = $user->getFirstName();
         $response["lastName"] = $user->getLastName();
