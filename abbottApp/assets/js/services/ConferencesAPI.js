@@ -1,26 +1,32 @@
 import axios from 'axios';
+import { CONFERENCES_API, PARTICIPANTS_API } from "../config";
+
 
 function findAllConferences() {
     return axios
-        .get("http://localhost:8000/api/conferences")
+        .get(CONFERENCES_API)
         .then(response => response.data["hydra:member"]);
 }
 
 function create(conf) {
     return axios
-        .post("http://localhost:8000/api/conferences", conf)
+        .post(CONFERENCES_API, conf)
 }
 
 function subscribeConference(participant){
     return axios
-        .post("http://localhost:8000/api/participants", participant)
+        .post(PARTICIPANTS_API, participant)
 }
 
 function unSubscribeConference(id) {
     return axios
-        .delete("http://localhost:8000/api/participants/" + id);
+        .delete(PARTICIPANTS_API + "/" + id);
+}
+function deleteConference(id) {
+    return axios
+        .delete(CONFERENCES_API + "/" + id);
 }
 
 export default{
-    findAllConferences, create,  subscribeConference, unSubscribeConference
+    findAllConferences, create,  subscribeConference, unSubscribeConference, deleteConference
 }

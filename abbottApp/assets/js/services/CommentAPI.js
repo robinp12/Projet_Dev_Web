@@ -1,19 +1,21 @@
 import axios from 'axios';
+import { COMMENTS_API } from "../config";
+
 
 function findAll() {
     return axios
-        .get("http://localhost:8000/api/comments")
+        .get(COMMENTS_API)
         .then(response => response.data["hydra:member"]);
 }
 
 function newComment(comment){
     return axios
-        .post("http://localhost:8000/api/comments", comment)
+        .post(COMMENTS_API, comment)
 }
 
 function deleteComment(id) {
     return axios
-        .delete("http://localhost:8000/api/comments/" + id);
+        .delete(COMMENTS_API + "/" + id);
 }
 
 export default{

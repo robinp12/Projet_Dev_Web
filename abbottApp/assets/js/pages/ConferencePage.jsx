@@ -81,9 +81,7 @@ const ConferencePage = props => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        axios
-            .get("http://localhost:8000/api/conferences")
-            .then(response => response.data["hydra:member"])
+        ConferencesAPI.findAllConferences()
             .then(data => setConferences(data))
             .catch(error => console.log(error.response));
     }, []);
@@ -92,8 +90,7 @@ const ConferencePage = props => {
         const originalConferences = [...conferences];
         setConferences(conferences.filter(conference => conference.id !== id));
 
-        axios
-            .delete("http://localhost:8000/api/conferences/" + id)
+        ConferencesAPI.deleteConference(id)
             .catch(error => {
                 setConferences(originalConferences)
             });

@@ -1,7 +1,9 @@
 import axios from "axios";
+import { MEDECINS_API } from "../config";
+
 
 function update(id, user){
-    return axios.put("http://localhost:8000/api/medecins/" + id, user);
+    return axios.put(MEDECINS_API + "/" + id, user);
 }
 
 export default {

@@ -16,6 +16,9 @@ return [[
                 'http://localhost:8080/build/vendors~app.js',
                 'http://localhost:8080/build/app.js',
             ],
+            'css' => [
+                'http://localhost:8080/build/app.css',
+            ],
         ],
     ],
 ],
