@@ -334,3 +334,13 @@ a178d9,127.0.0.1,GET,http://localhost:8000/api/users?email=simon.mohimont%40hotm
 8644ab,127.0.0.1,GET,http://localhost:8000/api/conferences,1589897541,,200
 216560,127.0.0.1,GET,http://localhost:8000/api/users,1589897543,,200
 b6cc09,127.0.0.1,GET,http://localhost:8000/getInfosUser/2,1589897544,,200
+483318,127.0.0.1,GET,http://localhost:8000/,1589898899,,200
+0316e3,127.0.0.1,GET,http://localhost:8000/getInfosUser/2,1589898901,,200
+a78b9c,127.0.0.1,GET,http://localhost:8000/,1589898959,,200
+c2d256,127.0.0.1,GET,http://localhost:8000/getInfosUser/2,1589898960,,200
+12ff21,127.0.0.1,POST,http://localhost:8000/api/login_check,1589898976,,200
+7a2079,127.0.0.1,GET,http://localhost:8000/api/users?email=simon.mohimont%40hotmail.com,1589898976,,200
+c0462e,127.0.0.1,GET,http://localhost:8000/api/conferences,1589898976,,200
+2d7751,127.0.0.1,GET,http://localhost:8000/api/conferences,1589898978,,200
+20f6d4,127.0.0.1,GET,http://localhost:8000/api/users?email=simon.mohimont%40hotmail.com,1589898979,,200
+df205a,127.0.0.1,GET,http://localhost:8000/api/conferences,1589898979,,200
