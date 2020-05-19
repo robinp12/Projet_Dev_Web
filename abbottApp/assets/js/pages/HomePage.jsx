@@ -66,7 +66,7 @@ const HomePage = props => {
             <div className="container">
                 <div className="row">
                     <div className="col-6">
-                        <Header title={"Futures conférences"}/>
+                        <Header title={"Futur conférences"}/>
                         <div className="justify-content-center row">
                             {futureConferences.map((conf, index) =>
                                 <div key={index} className="card">

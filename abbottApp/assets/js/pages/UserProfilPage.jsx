@@ -47,9 +47,7 @@ const UserProfilPage = props => {
     return(
         <>
             <div className="container">
-                <div className="row">
-                        <h3 className={"mb-5 text-center"}>Profil de {user.firstName + " " + user.lastName}</h3>
-                </div>
+            <Header title={"Profil de " + user.firstName + " " + user.lastName}/>
 
                 <div className={"row"}>
                     <div className="col">

@@ -100,7 +100,7 @@ const ConferencePage = props => {
     };
 
     return ( <>
-        <Header title={"Liste des conférences"} other={<button className="btn btn-outline-primary" onClick={() => setShow(!show)}>Ajouter conférence</button>}/>
+        <Header title={"Gestion des conférences"} other={<button className="btn btn-outline-primary" onClick={() => setShow(!show)}>Ajouter conférence</button>}/>
         {show && <AddConference/>}
         <div className="row justify-content-center">
 

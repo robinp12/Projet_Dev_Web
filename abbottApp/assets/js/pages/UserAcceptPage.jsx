@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import usersAPI from "../services/usersAPI";
 import {toast} from "react-toastify";
+import Header from '../components/Header';
 
 const UserAcceptPage = () => {
     const [unacceptedUsers, setUnacceptedUsers] = useState([]);
@@ -46,7 +47,7 @@ const UserAcceptPage = () => {
 
     return(
         <>
-            <h1>Liste des utilisateurs</h1>
+        <Header title="Gestion des utilisateurs"/>
             <div className="row justify-content-center">
                 <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">
                     <table className="table table-hover">
