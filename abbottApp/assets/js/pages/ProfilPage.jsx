@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import jwtDecode from "jwt-decode";
 import usersAPI from "../services/usersAPI";
 import Field from "../components/forms/Fields";
-import MedecinAPI from "../services/MedecinAPI";
-import Header from '../components/Header';
+import {toast} from "react-toastify";
 
 
 const ProfilPage = () => {
@@ -14,21 +13,16 @@ const ProfilPage = () => {
         firstName: "",
         email: "",
         telephone: "",
-        addresse: "",
-    })
-
-    const [medecin, setMedecin] = useState({
-        id: "",
         inamiNumber: "",
         speciality: "",
     })
+
 
     const [errors, setErrors] = useState({
         lastName: "",
         firstName: "",
         email: "",
         telephone: "",
-        addresse: "",
         inamiNumber: "",
         speciality: "",
     })
@@ -38,20 +32,8 @@ const ProfilPage = () => {
         if (token) {
             const {id} = jwtDecode(token);
             try{
-                const response = await usersAPI.getInfosUser(id);
-                let objUser ={};
-                let objMedecin = {};
-                objUser.id = response["idUser"] != null ? response["idUser"] : "";
-                objMedecin.id = response["idMedecin"] != null ? response["idMedecin"] : "";
-                objUser.lastName = response.lastName != null ? response.lastName : "";
-                objUser.firstName = response.firstName != null ? response.firstName : "";
-                objUser.email = response.email != null ? response.email : "";
-                objUser.telephone = response.telephone != null ? response.telephone : "";
-                objUser.addresse = response.addresse != null ? response.addresse : "";
-                objMedecin.inamiNumber = response.inamiNumber != null ? response.inamiNumber : "";
-                objMedecin.speciality = response.speciality != null ? response.speciality : "";
-                setUser(objUser);
-                setMedecin(objMedecin);
+                const response = await usersAPI.find(id);
+                setUser(response);
             } catch (e) {
                 console.error(e);
             }
@@ -63,27 +45,19 @@ const ProfilPage = () => {
         setUser({...user, [name]: value});
     };
 
-    const handleChangeMedecin = ({ currentTarget }) => {
-        const { name, value } = currentTarget;
-        setMedecin({...medecin, [name]: value});
-    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(user);
-        console.log(medecin);
         try {
             await usersAPI.update(user.id, user);
-            await MedecinAPI.update(medecin.id, medecin);
+            toast.success("Profil mis à jour");
             setErrors({});
         } catch (error) {
             if(error.response.data.violations){
-                console.log(error.response.data.violations);
                 const apiErrors = {};
                 error.response.data.violations.forEach(violation => {
                     apiErrors[violation.propertyPath] = violation.message;
                 });
-                console.log(apiErrors);
                 setErrors(apiErrors);
             }
         }
@@ -95,7 +69,7 @@ const ProfilPage = () => {
 
     return(
         <>
-            <Header title={"Profil de " + user.firstName + " " + user.lastName}/>
+            <h3 className={"text-center mb-5"}>Profil de {user.lastName} {user.firstName}</h3>
             <form onSubmit={handleSubmit} className={"container"}>
                 <div className="row">
                     <div className="col-6">
@@ -115,13 +89,12 @@ const ProfilPage = () => {
                 </div>
                 <div className="row">
                     <div className="col-6">
-                        <Field name={"speciality"} label={"Votre spécialité"} type={"text"} value={medecin.speciality} onChange={handleChangeMedecin} error={errors.speciality}/>
+                        <Field name={"speciality"} label={"Votre spécialité"} type={"text"} value={user.speciality} onChange={handleChangeUser} error={errors.speciality}/>
                     </div>
                     <div className="col-6">
-                        <Field name={"inamiNumber"} label={"Votre numéro Inami"} type={"text"} value={medecin.inamiNumber} onChange={handleChangeMedecin} error={errors.inamiNumber}/>
+                        <Field name={"inamiNumber"} label={"Votre numéro Inami"} type={"text"} value={user.inamiNumber} onChange={handleChangeUser} error={errors.inamiNumber}/>
                     </div>
                 </div>
-                <Field name={"addresse"} label={"Votre adresse"} type={"text"} value={user.addresse} onChange={handleChangeUser} error={errors.addresse}/>
                 <div className="from-group">
                     <button type={"submit"} className="btn btn-success">Enregistrer</button>
                 </div>

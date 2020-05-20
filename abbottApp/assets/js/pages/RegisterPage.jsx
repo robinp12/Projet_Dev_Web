@@ -41,7 +41,7 @@ const RegisterPage = ({ history }) => {
         }
 
         try {
-            await UsersAPI.create(user);
+            await UsersAPI.signUp(user);
             setErrors({});
 
             toast.success(

@@ -4,12 +4,15 @@ import Header from "../components/Header";
 import Fields from "../components/forms/Fields"
 import ConferencesAPI from "../services/ConferencesAPI";
 import DateFunctions from "../services/DateFunctions";
+import {Link} from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import {CONFERENCES_API} from "../config";
 
 const AddConference = (props) => {
 
     const [conf, setConf] = useState({
         name: "",
-        description: "",
+        room: "",
         day: DateFunctions.todayFormatYMD(),
         start: "",
         end: ""
@@ -43,6 +46,7 @@ const AddConference = (props) => {
         }
         try{
             await ConferencesAPI.create(newConf);
+            window.location.reload();
         } catch (error) {
             if(error.response.data.violations){
                 console.log(error.response.data.violations);
@@ -58,18 +62,24 @@ const AddConference = (props) => {
     return (
         <>
             <div className="add">
-                    <Fields className name={"name"} label={"Nom"} placeholder={"Nom"} value={conf.name} onChange={handleChange} error={errors.name}/>
-                    <Fields name={"description"} label={"Description"} placeholder={"Description"} type={"textarea"} value={conf.description} onChange={handleChange}/>
-                    <Fields name={"day"} label={"jour de la conférence"} placeholder={"Jour de la conférence"} type={"date"} value={conf.day}  onChange={handleChange}/>
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <Fields name={"start"} label={"Heure de début"} placeholder={"Début"} type={"time"} value={conf.start} onChange={handleChange} error={errors.start}/>
-                        </div>
-                        <div className="col-lg-6">
-                            <Fields name={"end"} label={"Heure de fin"} placeholder={"Fin"} type={"time"} value={conf.end} onChange={handleChange}/>
-                        </div>
-                        <button type="button" onClick={handleSubmit} className="btn btn-outline-success ml-auto">Ajouter</button>
+                <Fields className name={"name"} label={"Nom"} placeholder={"Nom"} value={conf.name} onChange={handleChange} error={errors.name}/>
+                <div className="row">
+                    <div className="col-lg-6">
+                        <Fields name={"room"} label={"Salle de la conférence"} placeholder={"Le numéro de la salle de la conférence"} type={"text"} value={conf.room} onChange={handleChange}/>
                     </div>
+                    <div className="col-lg-6">
+                        <Fields name={"day"} label={"jour de la conférence"} placeholder={"Jour de la conférence"} type={"date"} value={conf.day}  onChange={handleChange}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-lg-6">
+                        <Fields name={"start"} label={"Heure de début"} placeholder={"Début"} type={"time"} value={conf.start} onChange={handleChange} error={errors.start}/>
+                    </div>
+                    <div className="col-lg-6">
+                        <Fields name={"end"} label={"Heure de fin"} placeholder={"Fin"} type={"time"} value={conf.end} onChange={handleChange}/>
+                    </div>
+                    <button type="button" onClick={handleSubmit} className="btn btn-outline-success ml-auto">Ajouter</button>
+                </div>
             </div>
             <br/>
         </>
@@ -79,57 +89,85 @@ const ConferencePage = props => {
 
     const [conferences, setConferences] = useState([]);
     const [show, setShow] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [deleteConf, setDeleteConf] = useState({
+        id: 0,
+        name: ""
+    })
 
     useEffect(() => {
-        ConferencesAPI.findAllConferences()
+        axios
+            .get(CONFERENCES_API)
+            .then(response => response.data["hydra:member"])
             .then(data => setConferences(data))
             .catch(error => console.log(error.response));
     }, []);
+
+    const showAlertModal = (conf) => {
+        let confToDel = {
+            id: conf.id,
+            name: conf.name
+        }
+        setDeleteConf(confToDel);
+        setShowAlert(true);
+    }
 
     const handleDelete = id => {
         const originalConferences = [...conferences];
         setConferences(conferences.filter(conference => conference.id !== id));
 
-        ConferencesAPI.deleteConference(id)
+        axios
+            .delete(CONFERENCES_API + "/" + id)
             .catch(error => {
                 setConferences(originalConferences)
             });
+        setShowAlert(false);
     };
 
     return ( <>
-        <Header title={"Gestion des conférences"} other={<button className="btn btn-outline-primary" onClick={() => setShow(!show)}>Ajouter conférence</button>}/>
+        <Header title={"Liste des conférences"} other={<button className="btn btn-outline-primary" onClick={() => setShow(!show)}>Ajouter conférence</button>}/>
         {show && <AddConference/>}
         <div className="row justify-content-center">
-
-        <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">
-        <table className="table table-hover">
-            <thead className="bg-light">
-                <tr>
-                    <th className="text-center">Identifiant</th>
-                    <th>Nom</th>
-                    <th>Description</th>
-                    {/*<th>heure de début</th>*/}
-                    {/*<th>heure de fin</th>*/}
-                    <th className="text-center">\</th>
-                </tr>
-            </thead>
-            <tbody>
-                {conferences.map(conference =>
-                    <tr key={conference.id}>
-                        <td className="text-center">{conference.id}</td>
-                        <td>{conference.name}</td>
-                        <td>{conference.description}</td>
-                        {/*<td>{conference.getHourFormat}</td>*/}
-                        {/*<td>{conference.hourEnd}</td>*/}
-                        <td className="text-center">
-                            <button onClick={() => handleDelete(conference.id)} className="btn btn-sm btn-danger">Supprimer</button>
-                        </td>
-                    </tr>
-                 )}
-            </tbody>
-        </table>
+            <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <table className="table table-hover">
+                    <thead className="bg-light">
+                        <tr>
+                            <th className="text-center">Identifiant</th>
+                            <th>Nom</th>
+                            <th>Salle</th>
+                            <th className="text-center"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {conferences.map(conference =>
+                            <tr key={conference.id}>
+                                <td className="text-center">{conference.id}</td>
+                                <td>{conference.name}</td>
+                                <td>{conference.room}</td>
+                                <td>
+                                    <Link to={"/conferenceQrCode/" + conference.id} className="btn btn-primary btn-sm">
+                                        Générer QrCodeFp
+                                    </Link>
+                                </td>
+                                <td className="text-center">
+                                    <button onClick={() => showAlertModal(conference)} className="btn btn-sm btn-danger">Supprimer</button>
+                                </td>
+                            </tr>
+                         )}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        </div>
+        <Modal show={showAlert} onHide={() => setShowAlert(false)}>
+            <Modal.Body className={""}>
+                <p className={"text-danger"}>Etes vous sûr de vouloir supprimer la conférence : <b>{deleteConf.name}</b>, toutes les données en rapport avec cette conférence seront perdues.</p>
+                <div className="d-flex flex-row-reverse">
+                    <button onClick={() => handleDelete(deleteConf.id)} className="btn btn-sm btn-danger">Supprimer</button>
+                    <button onClick={() => setShowAlert(false)} className="btn btn-sm btn-primary mr-5">Annuler</button>
+                </div>
+            </Modal.Body>
+        </Modal>
     </>)
 }
 

@@ -29,7 +29,7 @@ const HomePage = props => {
             data[i]["dayLeft"] = DateFunctions.getDaysLeft(data[i]["start"]);
             data[i]["user"] = JSON.parse(JSON.stringify(data[i]["participants"]));
             for (let j = 0; j < data[i]["participants"].length; j++){
-                data[i]["user"][j] = data[i]["participants"][j]["user"];
+                data[i]["user"][j] = data[i]["participants"][j]["user"]["id"];
             }
         }
         setPastConferences(past);
@@ -53,7 +53,7 @@ const HomePage = props => {
      const unSubscribe = async (index) => {
          let participants = futureConferences[index]["participants"];
          for (let i = 0; i < participants.length; i++){
-            if ("/api/users/"+ idUser == participants[i]["user"]){
+            if (idUser == participants[i]["user"]["id"]){
                 let participantId = participants[i]["id"];
                 await ConferencesAPI.unSubscribeConference(participantId);
             }
@@ -66,14 +66,29 @@ const HomePage = props => {
             <div className="container">
                 <div className="row">
                     <div className="col-6">
-                        <Header title={"Futur conférences"}/>
-                        <div className="justify-content-center row">
+                        <Header title={"Futures conférences"}/>
+                        <table className="table table-hover container">
+                            <thead className="">
+                            <tr className={"row"}>
+                                <th className={"col-6"}>Nom de la conférence</th>
+                                <th className={"col-2"}>Date</th>
+                                <th className={"col-4"}></th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             {futureConferences.map((conf, index) =>
-                                <div key={index} className="card">
-                                    <div className="card-body">
-                                        <div className="card-title">
-                                            <span className={"m-3"}>{conf.name}</span>
-                                            {!conf["user"].includes("/api/users/" + idUser) &&
+                                <tr key={conf.id} className={"row"}>
+                                    <td className={"col-6"}>{conf.name}</td>
+                                    <td className={"col-2"}>
+                                        <small className="text-muted">Dans {conf.dayLeft} jours</small>
+                                    </td>
+                                    <td className={"col-4 d-flex flex-row"}>
+                                        <div>
+                                            <a href={"#/conferencedetails/" + conf.id}
+                                               className="btn btn-primary btn-sm float-right mr-3">Infos</a>
+                                        </div>
+                                        <div>
+                                            {!conf["user"].includes(idUser) &&
                                             <button onClick={() => subscribe(conf.id)}
                                                     className="btn btn-sm btn-success">S'inscire</button>
                                             ||
@@ -81,43 +96,42 @@ const HomePage = props => {
                                                     className="btn btn-sm btn-danger">Se désinscrire</button>
                                             }
                                         </div>
-                                        <p className="card-text">{conf.description}</p>
-                                        <p className="card-text">
-                                            <small className="text-muted">Dans {conf.dayLeft} jours
-                                                <a href={"#/conferencedetails/" + conf.id}
-                                                   className="btn btn-primary btn-sm float-right mr-3">Voir plus</a>
-                                            </small>
-                                        </p>
-                                    </div>
-                                </div>
+                                    </td>
+                                </tr>
                             )}
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                     <div className="col-6">
                         <Header title={"Conférences passées"}/>
-                        <div className="justify-content-center row">
-                            {authAPI.isAuthenticated() &&
-                            <>
-                                {pastConferences.map((conf, index) =>
-                                    <div key={index} className="card">
-                                        <div className="card-body">
-                                            <div className="card-title">
-                                                <span className={"m-3"}>{conf.name}</span>
-                                            </div>
-                                            <p className="card-text">{conf.description}</p>
-                                            <p className="card-text">
-                                                <small className="text-muted">Il y a {conf.dayLeft} jours
-                                                    <a href={"#/conferencedetails/" + conf.id}
-                                                       className="btn btn-primary btn-sm float-right mr-3">Voir plus</a>
-                                                </small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                )}
-                            </>
-                            || <h5 className="text-muted">Veuillez vous connecter pour voir les conférences.</h5>
-                            }
-                        </div>
+                        {authAPI.isAuthenticated() &&
+                        <>
+                                <table className="table table-hover container">
+                                    <thead className="">
+                                        <tr className={"row"}>
+                                            <th className={"col-5"}>Nom de la conférence</th>
+                                            <th className={"col-3"}>Date</th>
+                                            <th className={"col-2"}></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {pastConferences.map((conf, index) =>
+                                        <tr key={conf.id} className={"row"}>
+                                            <td className={"col-5"}>{conf.name}</td>
+                                            <td className={"col-3"}>
+                                                <small className="text-muted">Il y a {conf.dayLeft} jours</small>
+                                            </td>
+                                            <td className={"col-2"}>
+                                                <a href={"#/conferencedetails/" + conf.id}
+                                                   className="btn btn-primary btn-sm float-right mr-3">Infos</a>
+                                            </td>
+                                        </tr>
+                                    )}
+                                    </tbody>
+                                </table>
+                        </>
+                        || <h5 className="text-muted">Veuillez vous connecter pour voir les conférences.</h5>
+                        }
                     </div>
                 </div>
             </div>
