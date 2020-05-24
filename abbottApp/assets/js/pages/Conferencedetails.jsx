@@ -6,23 +6,18 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import ShareIcon from '@material-ui/icons/Share';
 import CardMedia from '@material-ui/core/CardMedia';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -84,7 +79,6 @@ const conferencedetails = props => {
                 height="250"
                 image="img/audience.jpg"
                 title="Conférence"
-
                 />
                 </Grid>
                         <Grid item xs={6} >
@@ -147,39 +141,38 @@ const conferencedetails = props => {
                                     <Typography variant="body2" color="textSecondary" component="p">
                                     Coronavirus (2019-nCoV) UPDATE
 
+                                        Chers collègues,
 
-Chers collègues,
+                                        Les médias parlent fréquemment du risque d’être atteint du Coronavirus 2019-nCov en Belgique. Ci-dessous, nous vous donnons une mise à jour sur les mesures à prendre chez les patients suspectés d'être infectés par 2019-nCov.
 
-Les médias parlent fréquemment du risque d’être atteint du Coronavirus 2019-nCov en Belgique. Ci-dessous, nous vous donnons une mise à jour sur les mesures à prendre chez les patients suspectés d'être infectés par 2019-nCov.
+                                        Vous pouvez lire la procédure la plus récente pour les médecins généralistes via le lien suivant:
+                                        https://epidemio.wiv-isp.be/ID/Pages/2019-nCoV.aspx
 
-Vous pouvez lire la procédure la plus récente pour les médecins généralistes via le lien suivant:
-https://epidemio.wiv-isp.be/ID/Pages/2019-nCoV.aspx
+                                        Actuellement il n’est plus nécessaire d’obtenir l’accord du le service Soins & Santé.
 
-Actuellement il n’est plus nécessaire d’obtenir l’accord du le service Soins & Santé.
+                                        Afin de décongestionner le Centre National de Référence et de pouvoir offrir une réponse plus rapide, le laboratoire LBS envoie les échantillons à partir du 12/03/2020 au laboratoire AML.
 
-Afin de décongestionner le Centre National de Référence et de pouvoir offrir une réponse plus rapide, le laboratoire LBS envoie les échantillons à partir du 12/03/2020 au laboratoire AML.
+                                        En pratique :
 
-En pratique :
+                                        2 écouvillons nasopharyngés (ou si possible 1 écouvillon nasopharyngé et 1 écouvillon oropharyngé) et, si nécessaire avec des symptômes sévères, des échantillons de voies respiratoires basses (par ex. Aspiration bronchique).
+                                        Utilisez, si possible, le formulaire de demande de laboratoire en fournissant un maximum d’informations cliniques (malheureusement pas de version française pour le moment):
+                                        https://www.aml-lab.be/website.nsf/Text/AF-AML-COVID-19-FR/$file/AF-AML-COVID-19-FR.pdf
 
-2 écouvillons nasopharyngés (ou si possible 1 écouvillon nasopharyngé et 1 écouvillon oropharyngé) et, si nécessaire avec des symptômes sévères, des échantillons de voies respiratoires basses (par ex. Aspiration bronchique).
-Utilisez, si possible, le formulaire de demande de laboratoire en fournissant un maximum d’informations cliniques (malheureusement pas de version française pour le moment):
-https://www.aml-lab.be/website.nsf/Text/AF-AML-COVID-19-FR/$file/AF-AML-COVID-19-FR.pdf
+                                        Le prix s’élève à 29 euro
+                                        Pour emballer les échantillons suspects de nCov-19, l'échantillon doit être placé :
 
-Le prix s’élève à 29 euro
-Pour emballer les échantillons suspects de nCov-19, l'échantillon doit être placé :
+                                        1.    dans un tube UTM (à défaut un Eswab)
+                                        2.    dans un sac en plastique hermétiquement réfermable avec un papier absorbant
+                                        3.    dans une enveloppe rembourrée ou un deuxième sac en plastique hermétiquement refermable. Le formulaire de candidature doit être présent en dehors du colis. Il doit être clairement indiqué sur l'emballage qu'il s'agit d'un échantillon d'analyse du virus corona. Vous pouvez demander le matériel d'emballage via le laboratoire.
+                                        Seuls les prélèvements respiratoires doivent être présents dans ce triple emballage. L’emballage ne sera pas ouvert par le laboratoire. Les autres types d’échantillons éventuellement présents ne seront pas traités. 
 
-1.    dans un tube UTM (à défaut un Eswab)
-2.    dans un sac en plastique hermétiquement réfermable avec un papier absorbant
-3.    dans une enveloppe rembourrée ou un deuxième sac en plastique hermétiquement refermable. Le formulaire de candidature doit être présent en dehors du colis. Il doit être clairement indiqué sur l'emballage qu'il s'agit d'un échantillon d'analyse du virus corona. Vous pouvez demander le matériel d'emballage via le laboratoire.
-Seuls les prélèvements respiratoires doivent être présents dans ce triple emballage. L’emballage ne sera pas ouvert par le laboratoire. Les autres types d’échantillons éventuellement présents ne seront pas traités. 
+                                        Si le laboratoire LBS doit prendre en charge le transport de l'échantillon, nous vous demandons de nous en informer au préalable par téléphone.
 
-Si le laboratoire LBS doit prendre en charge le transport de l'échantillon, nous vous demandons de nous en informer au préalable par téléphone.
+                                        
 
- 
+                                        En vous remerciant pour votre compréhension et collaboration, nous restons à votre disposition pour tout renseignement complémentaire et vous prions d’agréer, chers collègues, l’expression de nos sentiments les meilleurs.
 
-En vous remerciant pour votre compréhension et collaboration, nous restons à votre disposition pour tout renseignement complémentaire et vous prions d’agréer, chers collègues, l’expression de nos sentiments les meilleurs.
-
-Les biologistes LBS
+                                        Les biologistes LBS
 
 
                                     </Typography>

@@ -1195,3 +1195,5 @@
 [2020-04-21T23:15:33.228365+02:00] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
 [2020-04-21T23:15:54.619068+02:00] request.INFO: Matched route "home". {"route":"home","route_parameters":{"_route":"home","_controller":"App\\Controller\\AppController::index"},"request_uri":"http://localhost:8888/","method":"GET"} []
 [2020-04-21T23:15:54.662968+02:00] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
+[2020-04-21T23:44:13.871118+02:00] request.INFO: Matched route "home". {"route":"home","route_parameters":{"_route":"home","_controller":"App\\Controller\\AppController::index"},"request_uri":"http://localhost:8888/","method":"GET"} []
+[2020-04-21T23:44:14.051469+02:00] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
