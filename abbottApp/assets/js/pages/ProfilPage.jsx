@@ -3,6 +3,7 @@ import jwtDecode from "jwt-decode";
 import usersAPI from "../services/usersAPI";
 import Field from "../components/forms/Fields";
 import {toast} from "react-toastify";
+import Header from '../components/Header';
 
 
 const ProfilPage = () => {
@@ -69,7 +70,7 @@ const ProfilPage = () => {
 
     return(
         <>
-            <h3 className={"text-center mb-5"}>Profil : {user.lastName} {user.firstName}</h3>
+        <Header title={"Profil de " + user.lastName + " " + user.firstName}/>
             <form onSubmit={handleSubmit} className={"container"}>
                 <div className="row">
                     <div className="col-6">

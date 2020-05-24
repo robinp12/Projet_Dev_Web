@@ -68,11 +68,11 @@ const HomePage = props => {
             <div className="container">
                 <div className="row">
                     <div className="col-6">
-                        <Header title={"Futures conférences"}/>
+                        <Header title={"Conférences à venir"}/>
                         <table className="table table-hover container">
                             <thead className="">
                             <tr className={"row"}>
-                                <th className={"col-6"}>Nom de la conférence</th>
+                                <th className={"col-6"}>Nom conférence</th>
                                 <th className={"col-2"}>Date</th>
                                 <th className={"col-4"}></th>
                             </tr>
@@ -111,7 +111,7 @@ const HomePage = props => {
                                 <table className="table table-hover container">
                                     <thead className="">
                                         <tr className={"row"}>
-                                            <th className={"col-5"}>Nom de la conférence</th>
+                                            <th className={"col-5"}>Nom conférence</th>
                                             <th className={"col-3"}>Date</th>
                                             <th className={"col-2"}></th>
                                         </tr>
