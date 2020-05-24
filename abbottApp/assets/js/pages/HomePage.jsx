@@ -130,7 +130,7 @@ const HomePage = (props) => {
                         <tr key={conf.id} className={"row"}>
                           <td className={"col-5"}>{conf.name}</td>
                           <td className={"col-3 text-center"}>
-                            <small className="text-muted ">
+                            <small className="text-muted">
                               {new Date(conf.start).toLocaleDateString()}
                             </small>
                           </td>

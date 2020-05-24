@@ -184,8 +184,8 @@ const ConferencePage = (props) => {
                 <th className="text-center">#</th>
                 <th>Nom</th>
                 <th>Salle</th>
-                <th className="text-center">/</th>
-                <th className="text-center">/</th>
+                <th className="text-center">\</th>
+                <th className="text-center">\</th>
               </tr>
             </thead>
             <tbody>

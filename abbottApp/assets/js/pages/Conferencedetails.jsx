@@ -209,7 +209,7 @@ const conferencedetails = (props) => {
 
   return (
     <div>
-      {typeof conferences.name !== "undefined" && 
+      {typeof conferences.name !== "undefined" && (
         <Header
           title={
             conferences.name +
@@ -227,7 +227,7 @@ const conferencedetails = (props) => {
             )
           }
         />
-      }
+      )}
 
       <div key={conferences.id}>
         <div className={classes.root}>
@@ -244,7 +244,7 @@ const conferencedetails = (props) => {
             </Grid>
             <Grid item xs={3}>
               <Card>
-                <CardHeader title={"Salle"} />
+                <CardHeader className="text-muted" title={"Salle"} />
                 <CardContent>
                   {/* Petite description */}
                   <Typography
@@ -268,7 +268,7 @@ const conferencedetails = (props) => {
             </Grid>
             <Grid item xs={9}>
               <Card>
-                <CardHeader title="Description:" />
+                <CardHeader className="text-muted" title="Description :" />
                 {(!isAdmin && (
                   <CardContent>
                     {/* Petite description */}
@@ -282,9 +282,9 @@ const conferencedetails = (props) => {
                   </CardContent>
                 )) || (
                   <>
-                    <div className="form-group">
+                    <div className="form-group m-2">
                       <textarea
-                        className="form-control"
+                        className="form-control text-muted"
                         name={"description"}
                         value={conferences.description}
                         onChange={handleChange}
@@ -299,11 +299,11 @@ const conferencedetails = (props) => {
           {(isAdmin && (
             <div className="mb-5 mt-5 container">
               <Header title="Gestion des orateurs" />
-              <div className="row">
+              <div className="row justify-content-center">
                 <div className="col-4">
-                  <h6>Ajouter un orateur</h6>
+                  <h6 className="text-muted text-center">Ajouter un orateur</h6>
                   <ReactSearchBox
-                    placeholder="Rechercher quelqu'un"
+                    placeholder="Rechercher un orateur"
                     data={users}
                     onSelect={(record) => AddSpeaker(record["key"])}
                     onFocus={() => {}}
@@ -313,44 +313,46 @@ const conferencedetails = (props) => {
                     }}
                   />
                 </div>
-                <div className="col-2 "></div>
-                <div className="col-4">
-                  <table className="table table-hover">
-                    <thead className="">
-                      <tr>
-                        <th>Nom</th>
-                        <th></th>
+                </div>
+                <br/>
+                <div className="row">
+                <div className="col float-right">
+                <table className="table table-hover">
+                  <thead className="">
+                    <tr>
+                      <th>Nom</th>
+                      <th>\</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {speakers.map((speak) => (
+                      <tr key={speak.id}>
+                        <td>
+                          <Link
+                            to={"/profile/" + speak.user.id}
+                            className="btn btn-link pl-0"
+                          >
+                            <p className={"ml-3"}>
+                              <u>
+                                {speak.user.lastName +
+                                  " " +
+                                  speak.user.firstName}
+                              </u>
+                            </p>
+                          </Link>
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => handleDelete(speak.id)}
+                            className="btn btn-sm btn-danger"
+                          >
+                            Supprimer
+                          </button>
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {speakers.map((speak) => (
-                        <tr key={speak.id}>
-                          <td>
-                            <Link
-                              to={"/profile/" + speak.user.id}
-                              className="btn btn-link pl-0"
-                            >
-                              <p className={"ml-3"}>
-                                <u>
-                                  {speak.user.lastName +
-                                    " " +
-                                    speak.user.firstName}
-                                </u>
-                              </p>
-                            </Link>
-                          </td>
-                          <td>
-                            <button
-                              onClick={() => handleDelete(speak.id)}
-                              className="btn btn-sm btn-danger"
-                            >
-                              Supprimer
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                    ))}
+                  </tbody>
+                </table>
                 </div>
               </div>
             </div>
@@ -384,9 +386,9 @@ const conferencedetails = (props) => {
               </table>
             </>
           )}
-          <div className={"mt-3"}>
-            <h4>Commentaires</h4>
-            <form onSubmit={handleSubmitComment} className={"ml-0 mr-0"}>
+          <div className={"mt-3 ml-4 mr-4"}>
+            <h5 className="text-muted">Commentaires</h5>
+            <form onSubmit={handleSubmitComment} className={"ml-0 mr-5"}>
               <Field
                 onChange={handleChangeComment}
                 value={newComment}
