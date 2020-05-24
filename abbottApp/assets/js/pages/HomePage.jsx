@@ -13,8 +13,10 @@ const HomePage = props => {
     const [reload, setReload] = useState(0);
 
     const fetchConferences = async () => {
-        const response = await authAPI.getUserInfo();
-        setIdUser(response[0].id);
+        const response = await authAPI?.getUserInfo();
+        if(typeof(response) != 'undefined'){
+            setIdUser(response[0].id);
+        }
         const data = await ConferencesAPI.findAllConferences();
         let past = [];
         let future = [];

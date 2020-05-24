@@ -30,7 +30,7 @@ import {Link} from "react-router-dom";
 import DateFunctions from "../services/DateFunctions";
 import usersAPI from "../services/usersAPI";
 import ReactSearchBox from "react-search-box";
-import SpeakersAPI from "../services/SpeakersAPI";
+import SpeakersAPI from "../services/SpeakerAPI";
 
 const useStyles = makeStyles((theme) => ({
     root: {

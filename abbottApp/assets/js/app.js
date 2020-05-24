@@ -17,6 +17,8 @@ import conferencedetails from './pages/Conferencedetails';
 import DateFunctions from "./services/DateFunctions";
 import ProfilPage from "./pages/ProfilPage";
 import UserProfilPage from "./pages/UserProfilPage";
+import QrCodePage from "./pages/QrCodePage";
+
 
 authAPI.setup();
 

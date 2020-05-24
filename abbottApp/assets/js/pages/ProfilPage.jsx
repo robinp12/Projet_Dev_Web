@@ -69,30 +69,30 @@ const ProfilPage = () => {
 
     return(
         <>
-            <h3 className={"text-center mb-5"}>Profil de {user.lastName} {user.firstName}</h3>
+            <h3 className={"text-center mb-5"}>Profil : {user.lastName} {user.firstName}</h3>
             <form onSubmit={handleSubmit} className={"container"}>
                 <div className="row">
                     <div className="col-6">
-                        <Field name={"firstName"} label={"Votre prénom"} type={"text"} value={user.firstName} onChange={handleChangeUser} error={errors.firstName}/>
+                        <Field name={"firstName"} label={"Prénom"} placeholder={"Prénom"} type={"text"} value={user.firstName} onChange={handleChangeUser} error={errors.firstName}/>
                     </div>
                     <div className="col-6">
-                        <Field name={"lastName"} label={"Votre nom"} type={"text"} value={user.lastName} onChange={handleChangeUser} error={errors.lastName}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-6">
-                        <Field name={"email"} label={"Votre email"} type={"text"} value={user.email} onChange={handleChangeUser} error={errors.email}/>
-                    </div>
-                    <div className="col-6">
-                        <Field name={"telephone"} label={"Votre numéro de téléphone"} type={"telephone"} value={user.telephone} onChange={handleChangeUser} error={errors.telephone}/>
+                        <Field name={"lastName"} label={"Nom"} placeholder={"Nom"} type={"text"} value={user.lastName} onChange={handleChangeUser} error={errors.lastName}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-6">
-                        <Field name={"speciality"} label={"Votre spécialité"} type={"text"} value={user.speciality} onChange={handleChangeUser} error={errors.speciality}/>
+                        <Field name={"email"} label={"Email"} placeholder={"Email"} type={"text"} value={user.email} onChange={handleChangeUser} error={errors.email}/>
                     </div>
                     <div className="col-6">
-                        <Field name={"inamiNumber"} label={"Votre numéro Inami"} type={"text"} value={user.inamiNumber} onChange={handleChangeUser} error={errors.inamiNumber}/>
+                        <Field name={"telephone"} label={"Numéro de téléphone"} placeholder={"Numéro de téléphone"} type={"telephone"} value={user.telephone} onChange={handleChangeUser} error={errors.telephone}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-6">
+                        <Field name={"speciality"} label={"Spécialité"} placeholder={"Spécialité"} type={"text"} value={user.speciality} onChange={handleChangeUser} error={errors.speciality}/>
+                    </div>
+                    <div className="col-6">
+                        <Field name={"inamiNumber"} label={"Numéro Inami"} placeholder={"Numéro Inami"} type={"text"} value={user.inamiNumber} onChange={handleChangeUser} error={errors.inamiNumber}/>
                     </div>
                 </div>
                 <div className="from-group">

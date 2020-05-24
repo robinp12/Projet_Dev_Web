@@ -54,9 +54,9 @@ const LoginPage = ({ history}) => {
             <Header title={"Connexion"}/>
             <form action="" onSubmit={handleSubmit}>
                 <Field label={"Adresse email"} name={"username"} value={credentials.username}
-                       placeholder={'Adresse email de Connexion'} onChange={handleChange} type={"email"} error={error}/>
+                       placeholder={'Email'} onChange={handleChange} type={"email"} error={error}/>
                 <Field label={"Mot de passe"} name={"password"} value={credentials.password} onChange={handleChange}
-                       type={"password"} error={""}/>
+                       placeholder={'Mot de passe'} type={"password"} error={""}/>
                 <div className="form-group">
                     <button type={"submit"} className={"btn btn-success"}>Se connecter</button>
                 </div>
