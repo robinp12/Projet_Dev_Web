@@ -34,7 +34,7 @@ const RegisterPage = ({ history }) => {
 
         if (user.password !== user.passwordConfirm) {
             apiErrors.passwordConfirm =
-                "Votre confirmation de mot de passe n'est pas conforme avec le mot de passe original";
+                "Le mot de passe n'est pas identique";
             setErrors(apiErrors);
             toast.error("Des erreurs dans votre formulaire !");
             return;
