@@ -93,7 +93,7 @@ const ProfilPage = () => {
                         <Field name={"speciality"} label={"Spécialité"} placeholder={"Spécialité"} type={"text"} value={user.speciality} onChange={handleChangeUser} error={errors.speciality}/>
                     </div>
                     <div className="col-6">
-                        <Field name={"inamiNumber"} label={"Numéro Inami"} placeholder={"Numéro Inami"} type={"text"} value={user.inamiNumber} onChange={handleChangeUser} error={errors.inamiNumber}/>
+                        <Field name={"inamiNumber"} label={"Numéro INAMI"} placeholder={"Numéro INAMI"} type={"text"} value={user.inamiNumber} onChange={handleChangeUser} error={errors.inamiNumber}/>
                     </div>
                 </div>
                 <div className="from-group">

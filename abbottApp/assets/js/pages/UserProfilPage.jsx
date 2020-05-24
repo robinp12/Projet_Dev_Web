@@ -53,7 +53,7 @@ const UserProfilPage = props => {
                     <div className="col">
                         <p><b>email:</b> {user.email}</p>
                         <p><b>tel: </b>{user.telephone}</p>
-                        <p><b>numéro inami:</b> {user.inamiNumber}</p>
+                        <p><b>numéro INAMI:</b> {user.inamiNumber}</p>
                         <p><b>spécialité: </b> {user.speciality}</p>
                     </div>
                     <div className="col">
